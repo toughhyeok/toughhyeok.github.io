@@ -1,0 +1,14 @@
+{% assign active = page.url | downcase | split: '/' %}
+
+<nav class="nav">
+    <div class="nav-container">
+        <ul>
+            <li class="transition">
+                <a href="{{ '/' | prepend: site.baseurl }}" {% if page.layout == 'home' %} class="active" {% endif %} >Home</a>
+            </li>
+            <li class="transition">
+                <a href="{{ '/post' | prepend: site.baseurl }}" {% if page.layout != 'home' %} class="active" {% endif %} >Post</a>
+            </li>
+        </ul>
+    </div>
+</nav>

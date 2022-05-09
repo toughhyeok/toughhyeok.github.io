@@ -1,0 +1,42 @@
+# Permalinks
+permalink:       /:year-:month-:day/:title
+
+# Setup
+title:           toughhyeok
+description:     개발 기록장 ✏️
+baseurl:         ''
+url:             'https://toughhyeok.github.io'
+
+# Assets
+sass:
+  sass_dir:      _sass
+  style:         :compressed
+
+# Build settings
+markdown:        kramdown
+
+# About
+author:
+  name:          Park Junhyeok
+  url:           https://toughhyeok.github.io
+  email:         toughhyeok96@gmail.com
+  github:        toughhyeok/toughhyeok.github.io
+  instagram:     junhyeo.k
+  twitter:
+
+# Custom vars
+version:         1.0.0
+github:
+  repo:          https://github.com/toughhyeok/toughhyeok.github.io
+
+# Google Analytics
+
+# Jennifer
+# jennifer:
+#   analytics:
+#     tracking_id: 370bd56b
+
+# Naver
+# naver:
+#   search:
+#     tracking_id: 5da5c4aff0bbac7f7ab43f6211bd796a03afe4c8

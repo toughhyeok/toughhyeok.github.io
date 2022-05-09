@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+{% if page.banner %}
+<div class="post-header loading-animation {{ page.banner-position }}"
+     style="background-image: url('{{ page.banner }}')">
+</div>
+{% endif%}
+
+<!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+{% assign uploadTime = page.date | date : '%s' %}
+{% assign nowTime = site.time | date : '%s' %}
+{% assign pastSecond = nowTime | minus: uploadTime %}
+{% assign pastDay = pastSecond | divided_by: 60 | divided_by: 60 | divided_by: 24 %}
+
+<main>
+    <div class="post">
+        <div class="post-info">
+            <div class="post-type-tag">
+                {% if page.draft == true %}
+                <div class="catalogue-tag">
+                    Coming Soon
+                </div>
+                {% elsif pastDay < 7 %}
+                <div class="catalogue-tag">
+                    New
+                </div>
+                {% endif %}
+                <div class="post-type">
+                    {{ page.category }}
+                </div>
+            </div>
+            <h1 class="post-title">
+                {{ page.title }}
+            </h1>
+            <h2 class="post-subtitle">
+                {{ page.subtitle }}
+            </h2>
+        </div>
+
+        <!-- draft 일 때 -->
+        {% if page.draft == true %}
+        <div class="catalogue-draft-message">
+            <h1>
+                🙋🏻 Coming Soon!
+            </h1>
+            현재 열심히 글을 쓰고 있어요. 조금만 기다려주세요!
+        </div>
+        {% else %}
+        <!-- 큐레이션 영역 -->
+        {{ content }}
+        {% endif %}
+    </div>
+
+    {% if page.draft != true %}
+        {% include share.html %}
+    {% endif %}
+
+    {% include comment.html %}
+</main>

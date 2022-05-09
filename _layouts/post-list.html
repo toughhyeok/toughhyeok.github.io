@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+{% if page.banner-title or page.banner-description %}
+<div class="project-header loading-animation">
+    <div class="container">
+        <div>
+            {% if page.banner-title %}
+            <div class="header-project-title">
+                {{ page.banner-title }}
+            </div>
+            {% endif %}
+            {% if page.banner-description %}
+            <div class="header-project-des">
+                {{ page.banner-description }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<main>
+{{ content }}
+</main>

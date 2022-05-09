@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>toughhyeok</title>
+        <description>개발 기록장 ✏️</description>
+        <link>https://toughhyeok.github.io/</link>
+        <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Mon, 09 May 2022 21:55:24 +0900</pubDate>
+        <lastBuildDate>Mon, 09 May 2022 21:55:24 +0900</lastBuildDate>
+        <generator>Jekyll v4.2.0</generator>
+        
+        <item>
+            <title>vue.js와 springboot 연동하기</title>
+            <description>&lt;h3 id=&quot;project-tree&quot;&gt;Project Tree&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;project_share_blog/src
+├── main
+│   ├── java
+│   ├── resources
+│   └── view → Client module with Vue code
+└── &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+    ├── java
+    └── resources
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;vue-실행-방법&quot;&gt;Vue 실행 방법&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/main/view/README.md&lt;/code&gt; 참조&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ./src/main/view &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;View 모듈은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm&lt;/code&gt;으로 관리됩니다.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/main/view/package.json&lt;/code&gt;에 모듈 목록 및 버전을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 명령어는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/main/view/src&lt;/code&gt; 아래 생성된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vue&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.css&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.js&lt;/code&gt; 그리고 이미지 파일들을 빌드해서 결과물을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./src/main/resources/static&lt;/code&gt; 디렉토리 아래에 저장합니다. 이 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vue&lt;/code&gt; 파일들은 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.js&lt;/code&gt; 파일로 변환됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 명령어는 개발 중일 때에만 사용합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vue&lt;/code&gt; 파일들은 build 과정을 거쳐 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.js&lt;/code&gt; 파일로 변환되어야 합니다. 개발 중에는 위 명령어를 통해서 실시간으로 vue 코드를 debug 할 수 있습니다. 현재 local 환경에서는 Tomcat은 8080 포트를 사용합니다. vue 또한 8080 포트를 기본으로 사용하므로 현재는 &lt;strong&gt;4000&lt;/strong&gt; 포트를 사용하도록 되어 있습니다. VS Editor를 이용해 debug할 경우 반드시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;launch.json&lt;/code&gt;를 반드시 수정해야합니다. (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; 파일안에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt;에서 포트를 변경할 수 있습니다. 포트 변경은 local 환경에 맞게 변경해도 상관 없습니다.)&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.vscode/launch.json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;IntelliSense&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;learn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;possible&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;attributes.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Hover&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;descriptions&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;existing&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;attributes.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;For&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;more&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;information&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;visit:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;https://go.microsoft.com/fwlink/?linkid=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;830387&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.2.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;configurations&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pwa-chrome&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;launch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Launch Chrome against localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:4000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4000&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;webRoot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;${workspaceFolder}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;무중단 배포를 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; 안에 script를 작성해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;를 실행시키도록 작성하면 됩니다. 순서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run build&lt;/code&gt; 다음에 Springboot가 실행되어야 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;--개발-도중-cors-문제-발생-시-vueconfigjs-파일-devserver-수정-필요&quot;&gt;🚨  개발 도중 CORS 문제 발생 시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vue.config.js&lt;/code&gt; 파일 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;devServer&lt;/code&gt; 수정 필요&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// vue.config.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineConfig&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@vue/cli-service&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;transpileDependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// npm run build 타겟 디렉토리&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;outputDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;../resources/static&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// npm run serve 개발 진행시에 포트가 다르기때문에 프록시 설정&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;devServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;http://localhost:8080&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+            <pubDate>Mon, 09 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-09/integration-vue-springboot-debug</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-09/integration-vue-springboot-debug</guid>
+            
+            
+            <category>vue.js</category>
+            
+        </item>
+        
+        <item>
+            <title>gradle로 npm install &amp; npm run build 자동화</title>
+            <description>&lt;h3 id=&quot;gradle-build-전에-npm-run-build-먼저-실행되도록-하기&quot;&gt;Gradle build 전에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run build&lt;/code&gt; 먼저 실행되도록 하기&lt;/h3&gt;
+
+&lt;h4 id=&quot;plugins&quot;&gt;plugins&lt;/h4&gt;
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2.6.7'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.spring.dependency-management'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.0.11.RELEASE'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.github.node-gradle.node'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'3.2.1'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'java'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gradle&lt;/code&gt;이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node&lt;/code&gt;를 사용할 수 있게 plugin 추가&lt;/p&gt;
+
+&lt;p&gt;참고 : &lt;a href=&quot;https://github.com/node-gradle/gradle-node-plugin&quot;&gt;gradle-node&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;node&quot;&gt;node&lt;/h4&gt;
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// node.js version&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'17.3.1'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;download&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true가 아닐 경우 global로 설치된 node.js가 있어야 한다.&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;nodeProjectDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./src/main/view&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node&lt;/code&gt; 버전 설정, download 유무 설정, view 디렉토리 설정 (여기서 view 디렉토리는 front-end 디렉토리를 의미합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;src/main/view&quot;&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h4 id=&quot;task&quot;&gt;task&lt;/h4&gt;
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NpmTask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Install Node.js packages&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'install'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;buildView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NpmTask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;dependsOn:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Build Vue.js&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'run'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'build'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buildView&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setUp&lt;/code&gt;이 실행되고 나서 실행됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt;이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NpmTask&lt;/code&gt;인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;task&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm&lt;/code&gt;으로 시작하고 뒤에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;args&lt;/code&gt;들이 따라옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setUp&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt;과 같은 기능을 합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt;에 작성된 모듈을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main/view/node_modules&lt;/code&gt;에 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buildView&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;와 같은 기능을 합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vue&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.css&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.js&lt;/code&gt; 그리고 이미지 파일들을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main/resources/static&lt;/code&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.html&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.js&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.css&lt;/code&gt; 그리고 이미지 파일로 변환하여 저장합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main/resources/static&lt;/code&gt;은 SpringBoot가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;을 찾는 장소 중 하나입니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;processresources&quot;&gt;processResources&lt;/h4&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;processResources&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dependsOn&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'buildView'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buildView&lt;/code&gt;를 실행할 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setUp&lt;/code&gt;이 먼저 실행되야 하므로 최종적으로 동작 순서는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setUp&lt;/code&gt; –&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buildView&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;buildgradle-전체-코드&quot;&gt;build.gradle 전체 코드&lt;/h4&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// build.gradle&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2.6.7'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.spring.dependency-management'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.0.11.RELEASE'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.github.node-gradle.node'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'3.2.1'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'java'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.example'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.0.1-SNAPSHOT'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sourceCompatibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;repositories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;mavenCentral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// node.js version&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'17.3.1'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;download&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true가 아닐 경우 global로 설치된 node.js가 있어야 한다.&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;nodeProjectDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./src/main/view&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NpmTask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Install Node.js packages&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'install'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;buildView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NpmTask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;dependsOn:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Build Vue.js&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'run'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'build'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-web'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;testImplementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-test'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-data-jpa'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.h2database:h2'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;annotationProcessor&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;named&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'test'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;useJUnitPlatform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;processResources&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dependsOn&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'buildView'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+            <pubDate>Mon, 09 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-09/automation-npm-run-build</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-09/automation-npm-run-build</guid>
+            
+            
+            <category>gradle</category>
+            
+        </item>
+        
+    </channel>
+</rss>

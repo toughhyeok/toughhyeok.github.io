@@ -1,0 +1,99 @@
+<head lang="ko">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title -->
+    {% if page.title %}
+        {% capture title %}{{ page.title }} | {{ site.title }}{% endcapture %}
+    {% else %}
+        {% assign title = site.title %}
+    {% endif %}
+
+    <!-- description -->
+    {% if page.layout == 'post' %}
+        {% assign description = page.content | truncatewords: 30 | strip_html %}
+    {% else %}
+        {% assign description = site.description %}
+    {% endif %}
+
+    <!-- image -->
+    {% if page.thumbnail %}
+        {% capture image %}{{ site.url }}{{ page.thumbnail }}{% endcapture %}
+    {% elsif page.banner %}
+        {% capture image %}{{ site.url }}{{ page.banner }}{% endcapture %}
+    {% else %}
+        {% capture image %}{{ site.url }}{{ '/assets/images/thumbnail.jpeg' }}{% endcapture %}
+    {% endif %}
+
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+
+    <!-- Open Graph : 링크 미리보기 -->
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:image" content="{{ image }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}"/>
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+
+    <!-- Syntax Highlight -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/highlight.js-11.0.1/rainbow.css">
+    <script src="{{ site.baseurl }}/assets/lib/highlight.js-11.0.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- JS -->
+    <script type="text/javascript" src="{{ site.baseurl }}/assets/scripts/post.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/styles/styles.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ site.baseurl }}/assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ site.baseurl }}/assets/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{ site.baseurl }}/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="naver-site-verification" content="{{ site.naver.search.tracking_id }}"/>
+
+    <!-- Start Google Analytics - Global Site Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics.tracking_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ site.google.analytics.tracking_id }}');
+    </script>
+    <!-- End Google Analytics -->
+
+    <!-- Start Jennifer -->
+    <script>
+    (function(j,en,ni,fer) {
+        j['dmndata']=[];j['jenniferFront']=function(args){window.dmndata.push(args)};
+        j['dmnaid']=fer;j['dmnatime']=new Date();j['dmnanocookie']=false;j['dmnajennifer']='JENNIFER_FRONT@INTG';
+        var b=Math.floor(new Date().getTime() / 60000) * 60000;var a=en.createElement(ni);
+        a.src='https://d-collect.jennifersoft.com/'+fer+'/demian.js?'+b;a.async=true;
+        en.getElementsByTagName(ni)[0].parentNode.appendChild(a);
+    }(window,document,'script','{{ site.jennifer.analytics.tracking_id }}'));
+    </script>
+    <!-- End Jennifer -->
+
+</head>
