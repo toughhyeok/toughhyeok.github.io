@@ -1,0 +1,112 @@
+I"t<ul class="catalogue">
+
+    <li class="catalogue-item">
+    <a href="/2022-05-10/ruby-docs-ri">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            ruby
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                ruby docs ri
+            </h1>
+            <p class="catalogue-sub">
+                ruby docs
+            </p>
+
+            
+            <p class="catalogue-body">끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를...</p>
+            
+        </div>
+    </a>
+</li>    
+
+    <li class="catalogue-item">
+    <a href="/2022-05-09/integration-vue-springboot-debug">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            vue.js
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                vue.js와 springboot 연동하기
+            </h1>
+            <p class="catalogue-sub">
+                build &amp; debug
+            </p>
+
+            
+            <p class="catalogue-body">Project Tree project_share_blog/src ├── main │   ├── java │   ├── resources │   └── view → Client module with Vue...</p>
+            
+        </div>
+    </a>
+</li>    
+
+    <li class="catalogue-item">
+    <a href="/2022-05-09/automation-npm-run-build">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            gradle
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                gradle로 npm install &amp; npm run build 자동화
+            </h1>
+            <p class="catalogue-sub">
+                view automatic deployment
+            </p>
+
+            
+            <p class="catalogue-body">Gradle build 전에 npm run build 먼저 실행되도록 하기 plugins plugins { id...</p>
+            
+        </div>
+    </a>
+</li>    
+
+</ul>
+:ET

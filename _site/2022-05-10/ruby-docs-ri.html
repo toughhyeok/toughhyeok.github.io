@@ -14,21 +14,21 @@
     <!-- image -->
     
 
-    <title>vue.js와 springboot 연동하기 | toughhyeok</title>
-    <meta name="description" content="Project Tree project_share_blog/src ├── main │   ├── java │   ├── resources │   └── view → Client module with Vue code └── test ├── java...">
+    <title>ruby docs ri | toughhyeok</title>
+    <meta name="description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div...">
 
     <!-- Open Graph : 링크 미리보기 -->
     <meta property="og:site_name" content="toughhyeok">
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-09/integration-vue-springboot-debug"/>
-    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/vue-logo.jpeg">
-    <meta property="og:title" content="vue.js와 springboot 연동하기 | toughhyeok">
-    <meta property="og:description" content="Project Tree project_share_blog/src ├── main │   ├── java │   ├── resources │   └── view → Client module with Vue code └── test ├── java..."/>
+    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-10/ruby-docs-ri"/>
+    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/ruby-logo.png">
+    <meta property="og:title" content="ruby docs ri | toughhyeok">
+    <meta property="og:description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div..."/>
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="vue.js와 springboot 연동하기 | toughhyeok">
-    <meta name="twitter:description" content="Project Tree project_share_blog/src ├── main │   ├── java │   ├── resources │   └── view → Client module with Vue code └── test ├── java...">
+    <meta name="twitter:title" content="ruby docs ri | toughhyeok">
+    <meta name="twitter:description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div...">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -106,7 +106,7 @@
 
 
 <div class="post-header loading-animation "
-     style="background-image: url('/assets/images/common/vue-logo.jpeg')">
+     style="background-image: url('/assets/images/common/ruby-logo.png')">
 </div>
 
 
@@ -126,87 +126,105 @@
                 </div>
                 
                 <div class="post-type">
-                    vue.js
+                    ruby
                 </div>
             </div>
             <h1 class="post-title">
-                vue.js와 springboot 연동하기
+                ruby docs ri
             </h1>
             <h2 class="post-subtitle">
-                build & debug
+                ruby docs
             </h2>
         </div>
 
         <!-- draft 일 때 -->
         
         <!-- 큐레이션 영역 -->
-        <h3 id="project-tree">Project Tree</h3>
+        <h3 id="끝내주는-ruby-interactive-ri">끝내주는 Ruby Interactive (RI)</h3>
+<p>많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_share_blog/src
-├── main
-│   ├── java
-│   ├── resources
-│   └── view → Client module with Vue code
-└── <span class="nb">test</span>
-    ├── java
-    └── resources
+<h3 id="설치-방법">설치 방법</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm docs generate
 </code></pre></div></div>
 
-<h3 id="vue-실행-방법">Vue 실행 방법</h3>
+<h4 id="example">Example</h4>
+<p>클래스에 대한 문서를 찾고 싶다면 <code class="language-plaintext highlighter-rouge">ri ClassName</code>을 실행한다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">./src/main/view/README.md</code> 참조</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri GC
+<span class="nt">------------------------------------------------------------------------</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ./src/main/view <span class="o">&amp;&amp;</span> npm <span class="nb">install</span>
-</code></pre></div></div>
+The GC module provides an interface to Ruby<span class="s1">'s mark and sweep garbage
+collection mechanism.
 
-<p>View 모듈은 <code class="language-plaintext highlighter-rouge">npm</code>으로 관리됩니다.
-<code class="language-plaintext highlighter-rouge">./src/main/view/package.json</code>에 모듈 목록 및 버전을 확인할 수 있습니다.</p>
+Some of the underlying methods are also available via the ObjectSpace
+module.
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
-</code></pre></div></div>
+You may obtain information about the operation of the GC through
+GC::Profiler.
+------------------------------------------------------------------------
+= Constants:
 
-<p>위 명령어는 <code class="language-plaintext highlighter-rouge">./src/main/view/src</code> 아래 생성된 <code class="language-plaintext highlighter-rouge">.vue</code>, <code class="language-plaintext highlighter-rouge">.css</code>, <code class="language-plaintext highlighter-rouge">.js</code> 그리고 이미지 파일들을 빌드해서 결과물을 <code class="language-plaintext highlighter-rouge">./src/main/resources/static</code> 디렉토리 아래에 저장합니다. 이 때 <code class="language-plaintext highlighter-rouge">.vue</code> 파일들은 모두 <code class="language-plaintext highlighter-rouge">.js</code> 파일로 변환됩니다.</p>
+INTERNAL_CONSTANTS:
+  internal constants
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run serve
-</code></pre></div></div>
 
-<p>위 명령어는 개발 중일 때에만 사용합니다. <code class="language-plaintext highlighter-rouge">.vue</code> 파일들은 build 과정을 거쳐 <code class="language-plaintext highlighter-rouge">.js</code> 파일로 변환되어야 합니다. 개발 중에는 위 명령어를 통해서 실시간으로 vue 코드를 debug 할 수 있습니다. 현재 local 환경에서는 Tomcat은 8080 포트를 사용합니다. vue 또한 8080 포트를 기본으로 사용하므로 현재는 <strong>4000</strong> 포트를 사용하도록 되어 있습니다. VS Editor를 이용해 debug할 경우 반드시 <code class="language-plaintext highlighter-rouge">launch.json</code>를 반드시 수정해야합니다. (<code class="language-plaintext highlighter-rouge">package.json</code> 파일안에 <code class="language-plaintext highlighter-rouge">script</code>에서 포트를 변경할 수 있습니다. 포트 변경은 local 환경에 맞게 변경해도 상관 없습니다.)</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">.vscode/launch.json</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">IntelliSense</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">learn</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">possible</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">Hover</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">descriptions</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">existing</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">For</span><span class="w"> </span><span class="err">more</span><span class="w"> </span><span class="err">information</span><span class="p">,</span><span class="w"> </span><span class="err">visit:</span><span class="w"> </span><span class="err">https://go.microsoft.com/fwlink/?linkid=</span><span class="mi">830387</span><span class="w">
-    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pwa-chrome"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch Chrome against localhost"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:4000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">8080</span><span class="w"> </span><span class="err">-&gt;</span><span class="w"> </span><span class="mi">4000</span><span class="w">
-            </span><span class="nl">"webRoot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+OPTS:
+  GC build options
 </span></code></pre></div></div>
 
-<p>무중단 배포를 위해서는 <code class="language-plaintext highlighter-rouge">build.gradle</code> 안에 script를 작성해서 <code class="language-plaintext highlighter-rouge">npm run build</code>를 실행시키도록 작성하면 됩니다. 순서는 <code class="language-plaintext highlighter-rouge">npm run build</code> 다음에 Springboot가 실행되어야 합니다.</p>
+<p>특정 메서드에 대한 정보를 얻고자 한다면 메서드 이름을 인자로 넘겨준다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri GC::enable
+<span class="o">=</span> GC::enable
 
-<h3 id="--개발-도중-cors-문제-발생-시-vueconfigjs-파일-devserver-수정-필요">🚨  개발 도중 CORS 문제 발생 시 <code class="language-plaintext highlighter-rouge">vue.config.js</code> 파일 <code class="language-plaintext highlighter-rouge">devServer</code> 수정 필요</h3>
+<span class="o">(</span>from ruby site<span class="o">)</span>
+<span class="nt">------------------------------------------------------------------------</span>
+  GC.enable    -&gt; <span class="nb">true </span>or <span class="nb">false</span>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// vue.config.js</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@vue/cli-service</span><span class="dl">'</span><span class="p">)</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">defineConfig</span><span class="p">({</span>
-  <span class="na">transpileDependencies</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="c1">// npm run build 타겟 디렉토리</span>
-  <span class="na">outputDir</span><span class="p">:</span> <span class="dl">'</span><span class="s1">../resources/static</span><span class="dl">'</span><span class="p">,</span>
+<span class="nt">------------------------------------------------------------------------</span>
 
-  <span class="c1">// npm run serve 개발 진행시에 포트가 다르기때문에 프록시 설정</span>
-  <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">proxy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://localhost:8080</span><span class="dl">'</span>
-  <span class="p">}</span>
-<span class="p">})</span>
+Enables garbage collection, returning <span class="nb">true </span><span class="k">if </span>garbage collection was
+previously disabled.
+
+  GC.disable   <span class="c">#=&gt; false</span>
+  GC.enable    <span class="c">#=&gt; true</span>
+  GC.enable    <span class="c">#=&gt; false</span>
 </code></pre></div></div>
+
+<p>입력한 메서드 이름이 다수의 클래스나 모듈에 있다면 <code class="language-plaintext highlighter-rouge">ri</code>는 모든 결과를 리스트로 제공한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri assoc
+<span class="o">=</span> .assoc
+
+<span class="o">(</span>from ruby site<span class="o">)</span>
+<span class="o">===</span> Implementation from Array
+<span class="nt">------------------------------------------------------------------------</span>
+  ary.assoc<span class="o">(</span>obj<span class="o">)</span>   -&gt; element_ary  or  nil
+
+<span class="nt">------------------------------------------------------------------------</span>
+
+Searches through an array whose elements are also arrays comparing obj
+with the first element of each contained array using obj.<span class="o">==</span><span class="nb">.</span>
+
+Returns the first contained array that matches <span class="o">(</span>that is, the first
+associated array<span class="o">)</span>, or nil <span class="k">if </span>no match is found.
+
+See also Array#rassoc
+
+  s1 <span class="o">=</span> <span class="o">[</span> <span class="s2">"colors"</span>, <span class="s2">"red"</span>, <span class="s2">"blue"</span>, <span class="s2">"green"</span> <span class="o">]</span>
+  s2 <span class="o">=</span> <span class="o">[</span> <span class="s2">"letters"</span>, <span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span> <span class="o">]</span>
+  s3 <span class="o">=</span> <span class="s2">"foo"</span>
+  a  <span class="o">=</span> <span class="o">[</span> s1, s2, s3 <span class="o">]</span>
+  a.assoc<span class="o">(</span><span class="s2">"letters"</span><span class="o">)</span>  <span class="c">#=&gt; [ "letters", "a", "b", "c" ]</span>
+  a.assoc<span class="o">(</span><span class="s2">"foo"</span><span class="o">)</span>      <span class="c">#=&gt; nil</span>
+</code></pre></div></div>
+
+<h4 id="ri-도움말"><code class="language-plaintext highlighter-rouge">ri</code> 도움말</h4>
+<p><code class="language-plaintext highlighter-rouge">ri --help</code></p>
+
+<p>끝내준다~~</p>
+
+<h3 id="ri-사용법-관련-참고-사이트">ri 사용법 관련 참고 사이트</h3>
+<p><a href="https://samuelmullen.com/2012/01/up-and-running-with-ruby-interactive-ri/">samuelmullen</a></p>
 
         
     </div>
@@ -244,7 +262,7 @@
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
     </div>
     <div class="share-facebook">
-        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-09/integration-vue-springboot-debug" data-layout="button_count"
+        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-10/ruby-docs-ri" data-layout="button_count"
              data-size="large" data-mobile-iframe="true">
             <a class="fb-xfbml-parse-ignore" target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">공유하기</a>

@@ -5,9 +5,106 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 09 May 2022 21:55:24 +0900</pubDate>
-        <lastBuildDate>Mon, 09 May 2022 21:55:24 +0900</lastBuildDate>
+        <pubDate>Tue, 10 May 2022 18:39:10 +0900</pubDate>
+        <lastBuildDate>Tue, 10 May 2022 18:39:10 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
+        
+        <item>
+            <title>ruby docs ri</title>
+            <description>&lt;h3 id=&quot;끝내주는-ruby-interactive-ri&quot;&gt;끝내주는 Ruby Interactive (RI)&lt;/h3&gt;
+&lt;p&gt;많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;설치-방법&quot;&gt;설치 방법&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm docs generate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
+&lt;p&gt;클래스에 대한 문서를 찾고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ri ClassName&lt;/code&gt;을 실행한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ri GC
+&lt;span class=&quot;nt&quot;&gt;------------------------------------------------------------------------&lt;/span&gt;
+
+The GC module provides an interface to Ruby&lt;span class=&quot;s1&quot;&gt;'s mark and sweep garbage
+collection mechanism.
+
+Some of the underlying methods are also available via the ObjectSpace
+module.
+
+You may obtain information about the operation of the GC through
+GC::Profiler.
+------------------------------------------------------------------------
+= Constants:
+
+INTERNAL_CONSTANTS:
+  internal constants
+
+
+OPTS:
+  GC build options
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;특정 메서드에 대한 정보를 얻고자 한다면 메서드 이름을 인자로 넘겨준다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ri GC::enable
+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; GC::enable
+
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from ruby site&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;------------------------------------------------------------------------&lt;/span&gt;
+  GC.enable    -&amp;gt; &lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;or &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;------------------------------------------------------------------------&lt;/span&gt;
+
+Enables garbage collection, returning &lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;garbage collection was
+previously disabled.
+
+  GC.disable   &lt;span class=&quot;c&quot;&gt;#=&amp;gt; false&lt;/span&gt;
+  GC.enable    &lt;span class=&quot;c&quot;&gt;#=&amp;gt; true&lt;/span&gt;
+  GC.enable    &lt;span class=&quot;c&quot;&gt;#=&amp;gt; false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;입력한 메서드 이름이 다수의 클래스나 모듈에 있다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ri&lt;/code&gt;는 모든 결과를 리스트로 제공한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ri assoc
+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .assoc
+
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from ruby site&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; Implementation from Array
+&lt;span class=&quot;nt&quot;&gt;------------------------------------------------------------------------&lt;/span&gt;
+  ary.assoc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;obj&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;   -&amp;gt; element_ary  or  nil
+
+&lt;span class=&quot;nt&quot;&gt;------------------------------------------------------------------------&lt;/span&gt;
+
+Searches through an array whose elements are also arrays comparing obj
+with the first element of each contained array using obj.&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+Returns the first contained array that matches &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;that is, the first
+associated array&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, or nil &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no match is found.
+
+See also Array#rassoc
+
+  s1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;colors&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;green&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  s2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;letters&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;b&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;c&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  s3 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;
+  a  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; s1, s2, s3 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  a.assoc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;letters&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#=&amp;gt; [ &quot;letters&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]&lt;/span&gt;
+  a.assoc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;#=&amp;gt; nil&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ri-도움말&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ri&lt;/code&gt; 도움말&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ri --help&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;끝내준다~~&lt;/p&gt;
+
+&lt;h3 id=&quot;ri-사용법-관련-참고-사이트&quot;&gt;ri 사용법 관련 참고 사이트&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://samuelmullen.com/2012/01/up-and-running-with-ruby-interactive-ri/&quot;&gt;samuelmullen&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Tue, 10 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-10/ruby-docs-ri</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-10/ruby-docs-ri</guid>
+            
+            
+            <category>ruby</category>
+            
+        </item>
         
         <item>
             <title>vue.js와 springboot 연동하기</title>
