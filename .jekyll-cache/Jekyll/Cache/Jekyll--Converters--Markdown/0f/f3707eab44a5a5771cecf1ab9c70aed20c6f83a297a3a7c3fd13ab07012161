@@ -1,4 +1,4 @@
-I"�<ul class="catalogue">
+I"�<ul class="catalogue">
 
     <li class="catalogue-item">
     <a href="/2022-05-10/ruby-naming-rule">
@@ -31,6 +31,42 @@
 
             
             <p class="catalogue-body">Example 변수, 클래스, 상수 이름    지역 변수 name fish_and_chips x_axis thx1138 &lt;code...</p>
+            
+        </div>
+    </a>
+</li>    
+
+    <li class="catalogue-item">
+    <a href="/2022-05-10/ruby-hash-constructor">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            ruby
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                ruby Hash 클래스의 재미있는 사실!
+            </h1>
+            <p class="catalogue-sub">
+                Hash constructor
+            </p>
+
+            
+            <p class="catalogue-body"> Hashes have a default value that is returned when accessing keys that do not exist in the hash. If no default is set...</p>
             
         </div>
     </a>

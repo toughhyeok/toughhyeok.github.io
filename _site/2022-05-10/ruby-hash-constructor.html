@@ -14,21 +14,21 @@
     <!-- image -->
     
 
-    <title>toughhyeok</title>
-    <meta name="description" content="개발 기록장 ✏️">
+    <title>ruby Hash 클래스의 재미있는 사실! | toughhyeok</title>
+    <meta name="description" content=" Hashes have a default value that is returned when accessing keys that do not exist in the hash. If no default is set nil is used. You can set...">
 
     <!-- Open Graph : 링크 미리보기 -->
     <meta property="og:site_name" content="toughhyeok">
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://toughhyeok.github.io/"/>
-    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/thumbnail.jpeg">
-    <meta property="og:title" content="toughhyeok">
-    <meta property="og:description" content="개발 기록장 ✏️"/>
+    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-10/ruby-hash-constructor"/>
+    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/ruby-logo.png">
+    <meta property="og:title" content="ruby Hash 클래스의 재미있는 사실! | toughhyeok">
+    <meta property="og:description" content=" Hashes have a default value that is returned when accessing keys that do not exist in the hash. If no default is set nil is used. You can set..."/>
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="toughhyeok">
-    <meta name="twitter:description" content="개발 기록장 ✏️">
+    <meta name="twitter:title" content="ruby Hash 클래스의 재미있는 사실! | toughhyeok">
+    <meta name="twitter:description" content=" Hashes have a default value that is returned when accessing keys that do not exist in the hash. If no default is set nil is used. You can set...">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -95,96 +95,140 @@
     <div class="nav-container">
         <ul>
             <li class="transition">
-                <a href="/"  class="active"  >Home</a>
+                <a href="/"  >Home</a>
             </li>
             <li class="transition">
-                <a href="/post"  >Post</a>
+                <a href="/post"  class="active"  >Post</a>
             </li>
         </ul>
     </div>
 </nav>
 
+
+<div class="post-header loading-animation "
+     style="background-image: url('/assets/images/common/ruby-logo.png')">
+</div>
+
+
+<!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+
+
+
+
+
 <main>
-    <div class="intro-animation">
-        <section class="explanation">
-            <h1 class="intro">
-                I'm Park Junhyeok,
-            </h1>
-            <h1 class="intro">a Web Programmer.
-            </h1>
-            <h2 class="intro">웹 프로그래머 박준혁입니다.</h2>
-        </section>
-    </div>
-    <div class="loading-animation">
-    <section class="resume">
-        <div class="resume-info">
-            <p class="second-label">
-            <span class="label-emoji">
-                👨🏻‍💻
-            </span>
-                &nbsp; I've worked for
-            </p>
-        </div>
-        <ul>
-            
-            <li class="workplace transition">
-                <p class="workplace-name">
-                    삼성전자
-                </p>
-                <div class="work-info">
-                    <p>
-                        Web Programmer
-                    </p>
-                    <p class="work-sub-info">
-                        2021. FEB - NOW
-                    </p>
+    <div class="post">
+        <div class="post-info">
+            <div class="post-type-tag">
+                
+                <div class="catalogue-tag">
+                    New
                 </div>
-            </li>
-            
-        </ul>
-        <!-- <a href="/project" class="transition">-->
-        <!--     <div class="view-all-projects transition">-->
-        <!--         View Selected Projects-->
-        <!--         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;}</style></defs><path d="M7.2,17.9l6.1-6.1L7.2,5.6,9,3.8l8,8-8,8Z"/><path class="cls-1" d="M.1-.2h24v24H.1Z"/></svg>-->
-        <!--     </div>-->
-        <!-- </a>-->
-    </section>
-
-    <section class="skill">
-        <div class="resume-info">
-            <p class="second-label">
-            <span class="label-emoji">
-                💪🏻
-            </span>
-                &nbsp; Interests
-            </p>
+                
+                <div class="post-type">
+                    ruby
+                </div>
+            </div>
+            <h1 class="post-title">
+                ruby Hash 클래스의 재미있는 사실!
+            </h1>
+            <h2 class="post-subtitle">
+                Hash constructor
+            </h2>
         </div>
-        <ul>
-            
-            <li class="skill_name">
-                JavaScript
-            </li>
-            
-            <li class="skill_name">
-                Python
-            </li>
-            
-            <li class="skill_name">
-                SprintBoot
-            </li>
-            
-            <li class="skill_name">
-                Ruby
-            </li>
-            
-            <li class="skill_name">
-                C/C++
-            </li>
-            
-        </ul>
-    </section>
 
-</div>    
+        <!-- draft 일 때 -->
+        
+        <!-- 큐레이션 영역 -->
+        <blockquote>
+  <p>Hashes have a default value that is returned
+when accessing keys that do not exist in the hash. If no default is set
+nil is used. You can set the default value by sending it as an argument
+to Hash.new:</p>
+
+  <p>grades = Hash.new(0)</p>
+
+  <p>Or by using the #default= method:</p>
+
+  <p>grades = {“Timmy Doe” =&gt; 8}
+ grades.default = 0</p>
+
+  <p>Accessing a value in a Hash requires using its key:</p>
+
+  <p>puts grades[“Jane Doe”] # =&gt; 0</p>
+</blockquote>
+
+<p>루비의 <code class="language-plaintext highlighter-rouge">Hash</code> 클래스를 선언하는 여러 방법 중 하나는 아래와 같이 <code class="language-plaintext highlighter-rouge">new</code>를 사용하는 것이다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grades</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span>
+</code></pre></div></div>
+
+<p>다른 언어에서의 <code class="language-plaintext highlighter-rouge">Hash</code> 처럼 주어진 키에 해당하는 객체가 없을 경우 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">nil</code>(ruby에서 nil은 아무것도 아님을 뜻하는 <strong>객체</strong>이다.)을 반환한다.</p>
+
+<p>하지만 이를 바꿀 수도 있다. 예를 들어 주어진 키에 해당하는 객체가 없을 때 <code class="language-plaintext highlighter-rouge">nil</code>이 아닌 <code class="language-plaintext highlighter-rouge">0</code>을 반환하도록 하기 위해서 다음과 같이 <code class="language-plaintext highlighter-rouge">Hash</code>를 선언하면 된다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grades</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7.6 :001 <span class="o">&gt;</span> grades <span class="o">=</span> Hash.new<span class="o">(</span>0<span class="o">)</span>
+ <span class="o">=&gt;</span> <span class="o">{}</span>
+2.7.6 :002 <span class="o">&gt;</span> puts grades[<span class="s1">'hello'</span><span class="o">]</span>
+0
+</code></pre></div></div>
+
+        
+    </div>
+
+    
+        <script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.10&appId=1607605225977118';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    window.twttr = (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+        t._e = [];
+        t.ready = function (f) {
+            t._e.push(f);
+        };
+        return t;
+    }(document, 'script', 'twitter-wjs'));
+</script>
+
+<section class="share transition">
+    <div class="share-twitter">
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
+    </div>
+    <div class="share-facebook">
+        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-10/ruby-hash-constructor" data-layout="button_count"
+             data-size="large" data-mobile-iframe="true">
+            <a class="fb-xfbml-parse-ignore" target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">공유하기</a>
+        </div>
+    </div>
+</section>
+    
+
+    <script src="https://utteranc.es/client.js"
+        repo="toughhyeok/toughhyeok.github.io"
+        issue-term="title"
+        label="💬 comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 </main>
 
 

@@ -5,8 +5,8 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 10 May 2022 19:18:09 +0900</pubDate>
-        <lastBuildDate>Tue, 10 May 2022 19:18:09 +0900</lastBuildDate>
+        <pubDate>Tue, 10 May 2022 19:44:08 +0900</pubDate>
+        <lastBuildDate>Tue, 10 May 2022 19:44:08 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
         
         <item>
@@ -50,6 +50,53 @@
             <pubDate>Tue, 10 May 2022 00:00:00 +0900</pubDate>
             <link>https://toughhyeok.github.io/2022-05-10/ruby-naming-rule</link>
             <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-10/ruby-naming-rule</guid>
+            
+            
+            <category>ruby</category>
+            
+        </item>
+        
+        <item>
+            <title>ruby Hash 클래스의 재미있는 사실!</title>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;Hashes have a default value that is returned
+when accessing keys that do not exist in the hash. If no default is set
+nil is used. You can set the default value by sending it as an argument
+to Hash.new:&lt;/p&gt;
+
+  &lt;p&gt;grades = Hash.new(0)&lt;/p&gt;
+
+  &lt;p&gt;Or by using the #default= method:&lt;/p&gt;
+
+  &lt;p&gt;grades = {“Timmy Doe” =&amp;gt; 8}
+ grades.default = 0&lt;/p&gt;
+
+  &lt;p&gt;Accessing a value in a Hash requires using its key:&lt;/p&gt;
+
+  &lt;p&gt;puts grades[“Jane Doe”] # =&amp;gt; 0&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;루비의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hash&lt;/code&gt; 클래스를 선언하는 여러 방법 중 하나는 아래와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt;를 사용하는 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다른 언어에서의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hash&lt;/code&gt; 처럼 주어진 키에 해당하는 객체가 없을 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt;(ruby에서 nil은 아무것도 아님을 뜻하는 &lt;strong&gt;객체&lt;/strong&gt;이다.)을 반환한다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이를 바꿀 수도 있다. 예를 들어 주어진 키에 해당하는 객체가 없을 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt;이 아닌 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;을 반환하도록 하기 위해서 다음과 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hash&lt;/code&gt;를 선언하면 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2.7.6 :001 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; grades &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Hash.new&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+2.7.6 :002 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; puts grades[&lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+            <pubDate>Tue, 10 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-10/ruby-hash-constructor</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-10/ruby-hash-constructor</guid>
             
             
             <category>ruby</category>
