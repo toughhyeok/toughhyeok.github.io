@@ -5,9 +5,56 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 10 May 2022 18:39:10 +0900</pubDate>
-        <lastBuildDate>Tue, 10 May 2022 18:39:10 +0900</lastBuildDate>
+        <pubDate>Tue, 10 May 2022 19:18:09 +0900</pubDate>
+        <lastBuildDate>Tue, 10 May 2022 19:18:09 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
+        
+        <item>
+            <title>ruby naming rule</title>
+            <description>&lt;h3 id=&quot;example-변수-클래스-상수-이름&quot;&gt;Example 변수, 클래스, 상수 이름&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;지역 변수&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fish_and_chips&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x_axis&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thx1138&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_x&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_26&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;인스턴스 변수&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@name&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@point_1&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@X&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@_&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@plan9&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;클래스 변수&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@total&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@symtab&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@N&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@x_pos&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@SINGLE&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;전역 변수&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$debug&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$CUSTOMER&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$_ $plan9&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$Global&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;클래스 이름&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActiveRoad&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyClass&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;상수 이름&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FEET_PER_MILE&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt; 다음에는 숫자가 올 수 없다&lt;/li&gt;
+  &lt;li&gt;메서드 이름은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; 기호로 끝날 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Tue, 10 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-10/ruby-naming-rule</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-10/ruby-naming-rule</guid>
+            
+            
+            <category>ruby</category>
+            
+        </item>
         
         <item>
             <title>ruby docs ri</title>

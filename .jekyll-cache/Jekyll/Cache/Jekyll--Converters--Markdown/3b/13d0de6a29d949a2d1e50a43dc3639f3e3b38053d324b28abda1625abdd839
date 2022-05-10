@@ -1,0 +1,36 @@
+I"�	<h3 id="example-변수-클래스-상수-이름">Example 변수, 클래스, 상수 이름</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>지역 변수</td>
+      <td><code class="language-plaintext highlighter-rouge">name</code> <code class="language-plaintext highlighter-rouge">fish_and_chips</code> <code class="language-plaintext highlighter-rouge">x_axis</code> <code class="language-plaintext highlighter-rouge">thx1138</code> <code class="language-plaintext highlighter-rouge">_x</code> <code class="language-plaintext highlighter-rouge">_26</code></td>
+    </tr>
+    <tr>
+      <td>인스턴스 변수</td>
+      <td><code class="language-plaintext highlighter-rouge">@name</code> <code class="language-plaintext highlighter-rouge">@point_1</code> <code class="language-plaintext highlighter-rouge">@X</code> <code class="language-plaintext highlighter-rouge">@_</code> <code class="language-plaintext highlighter-rouge">@plan9</code></td>
+    </tr>
+    <tr>
+      <td>클래스 변수</td>
+      <td><code class="language-plaintext highlighter-rouge">@@total</code> <code class="language-plaintext highlighter-rouge">@@symtab</code> <code class="language-plaintext highlighter-rouge">@@N</code> <code class="language-plaintext highlighter-rouge">@@x_pos</code> <code class="language-plaintext highlighter-rouge">@@SINGLE</code></td>
+    </tr>
+    <tr>
+      <td>전역 변수</td>
+      <td><code class="language-plaintext highlighter-rouge">$debug</code> <code class="language-plaintext highlighter-rouge">$CUSTOMER</code> <code class="language-plaintext highlighter-rouge">$_ $plan9</code> <code class="language-plaintext highlighter-rouge">$Global</code></td>
+    </tr>
+    <tr>
+      <td>클래스 이름</td>
+      <td><code class="language-plaintext highlighter-rouge">String</code> <code class="language-plaintext highlighter-rouge">ActiveRoad</code> <code class="language-plaintext highlighter-rouge">MyClass</code></td>
+    </tr>
+    <tr>
+      <td>상수 이름</td>
+      <td><code class="language-plaintext highlighter-rouge">FEET_PER_MILE</code> <code class="language-plaintext highlighter-rouge">DEBUG</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@</code> 다음에는 숫자가 올 수 없다</li>
+  <li>메서드 이름은 <code class="language-plaintext highlighter-rouge">?</code>, <code class="language-plaintext highlighter-rouge">!</code>, <code class="language-plaintext highlighter-rouge">=</code> 기호로 끝날 수 있다.</li>
+</ul>
+:ET
