@@ -1,4 +1,4 @@
-I"3!<ul class="catalogue">
+I"%<ul class="catalogue">
 
     <li class="catalogue-item">
     <a href="/2022-05-11/ruby-to_s">
@@ -103,6 +103,42 @@
 
             
             <p class="catalogue-body">Class class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def say_bye...</p>
+            
+        </div>
+    </a>
+</li>    
+
+    <li class="catalogue-item">
+    <a href="/2022-05-11/ruby-class-virtual-attribute">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            ruby
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                ruby 가상 속성
+            </h1>
+            <p class="catalogue-sub">
+                
+            </p>
+
+            
+            <p class="catalogue-body">이전 ruby Class 속성 접근자에서 attr_reader, attr_accessor에 대해 알아보았다. 하지만 속성에 접근하는 메서드가 단지 객체의 인스턴스 변수를 읽거나 대입하는...</p>
             
         </div>
     </a>
