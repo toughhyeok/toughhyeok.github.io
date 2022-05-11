@@ -1,0 +1,44 @@
+I"k<p>아래 <code class="language-plaintext highlighter-rouge">test_blog_html_parser.rb</code> 는 <code class="language-plaintext highlighter-rouge">nokogiri</code> 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다..</p>
+
+<p>실행 방법은 <code class="language-plaintext highlighter-rouge">ruby test_blog_html_parser.rb "https://hotamul.tistory.com/113"</code>로 해보면 실행한 폴더에 <code class="language-plaintext highlighter-rouge">113.html</code> 파일이 생성된 걸 볼 수 있다.</p>
+
+<p>너무 허접하다..</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># test_blog_html_parser.rb</span>
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+
+<span class="k">def</span> <span class="nf">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="kp">nil</span><span class="p">,</span> <span class="no">Encoding</span><span class="o">::</span><span class="no">UTF_8</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+    <span class="n">content_html</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".article-view"</span><span class="p">).</span><span class="nf">inner_html</span>
+    <span class="n">extra_html</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extra_html</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".container_postbtn"</span><span class="p">).</span><span class="nf">to_html</span><span class="p">)</span>
+    <span class="n">extra_html</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".another_category"</span><span class="p">).</span><span class="nf">to_html</span><span class="p">)</span>
+    <span class="n">extra_html</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">extra</span><span class="o">|</span> <span class="n">content_html</span><span class="p">.</span><span class="nf">slice!</span> <span class="n">extra</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">content_html</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">str</span><span class="p">)</span>
+    <span class="n">html_file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
+    <span class="n">html_file</span><span class="p">.</span><span class="nf">write</span> <span class="n">str</span>
+    <span class="n">html_file</span><span class="p">.</span><span class="nf">close</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">file_path</span><span class="si">}</span><span class="s2"> was saved successfully."</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">get_valid_file_path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)\</span>
+    <span class="k">return</span> <span class="n">file_path</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[\x00\/\\:\*\?\%"&lt;&gt;\|]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="no">PAGE_URL_LIST</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">;</span>
+<span class="no">PAGE_URL_LIST</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">url</span><span class="o">|</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">get_valid_file_path</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">write</span><span class="p">(</span><span class="s2">"./</span><span class="si">#{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+:ET

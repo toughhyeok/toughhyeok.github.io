@@ -14,21 +14,21 @@
     <!-- image -->
     
 
-    <title>ruby docs ri | toughhyeok</title>
-    <meta name="description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div...">
+    <title>재미있는 ruby 클래스 | toughhyeok</title>
+    <meta name="description" content="Class class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def say_bye puts "Bye #{@name}, come back soon."...">
 
     <!-- Open Graph : 링크 미리보기 -->
     <meta property="og:site_name" content="toughhyeok">
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-10/ruby-docs-ri"/>
+    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-11/ruby-interesting-class"/>
     <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/ruby-logo.png">
-    <meta property="og:title" content="ruby docs ri | toughhyeok">
-    <meta property="og:description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div..."/>
+    <meta property="og:title" content="재미있는 ruby 클래스 | toughhyeok">
+    <meta property="og:description" content="Class class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def say_bye puts "Bye #{@name}, come back soon."..."/>
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ruby docs ri | toughhyeok">
-    <meta name="twitter:description" content="끝내주는 Ruby Interactive (RI) 많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다. 설치 방법 <div...">
+    <meta name="twitter:title" content="재미있는 ruby 클래스 | toughhyeok">
+    <meta name="twitter:description" content="Class class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def say_bye puts "Bye #{@name}, come back soon."...">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -130,101 +130,96 @@
                 </div>
             </div>
             <h1 class="post-title">
-                ruby docs ri
+                재미있는 ruby 클래스
             </h1>
             <h2 class="post-subtitle">
-                ruby docs
+                
             </h2>
         </div>
 
         <!-- draft 일 때 -->
         
         <!-- 큐레이션 영역 -->
-        <h3 id="끝내주는-ruby-interactive-ri">끝내주는 Ruby Interactive (RI)</h3>
-<p>많은 루비 개발자들에게는 알려지지 않았지만, 루비는 언어의 API와 사용 가능한 모든 라이브러리를 참조할 수 있는 훌륭한 CUI(Composite User Interface)를 가지고 있다.</p>
-
-<h3 id="설치-방법">설치 방법</h3>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm docs generate
+        <h3 id="class">Class</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Greeter
+  def initialize(name = "World")
+    @name = name
+  end
+  def say_hi
+    puts "Hi #{@name}!"
+  end
+  def say_bye
+    puts "Bye #{@name}, come back soon."
+  end
+end
 </code></pre></div></div>
 
-<h4 id="example">Example</h4>
-<p>클래스에 대한 문서를 찾고 싶다면 <code class="language-plaintext highlighter-rouge">ri ClassName</code>을 실행한다.</p>
+<p>여기서 <code class="language-plaintext highlighter-rouge">@name</code>은 인스턴스 변수를 뜻하고 모든 메서드에서 접근 가능하다.<br />
+하지만 이런식으로 접근은 불가하다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri GC
-<span class="nt">------------------------------------------------------------------------</span>
-
-The GC module provides an interface to Ruby<span class="s1">'s mark and sweep garbage
-collection mechanism.
-
-Some of the underlying methods are also available via the ObjectSpace
-module.
-
-You may obtain information about the operation of the GC through
-GC::Profiler.
-------------------------------------------------------------------------
-= Constants:
-
-INTERNAL_CONSTANTS:
-  internal constants
-
-
-OPTS:
-  GC build options
-</span></code></pre></div></div>
-
-<p>특정 메서드에 대한 정보를 얻고자 한다면 메서드 이름을 인자로 넘겨준다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri GC::enable
-<span class="o">=</span> GC::enable
-
-<span class="o">(</span>from ruby site<span class="o">)</span>
-<span class="nt">------------------------------------------------------------------------</span>
-  GC.enable    -&gt; <span class="nb">true </span>or <span class="nb">false</span>
-
-<span class="nt">------------------------------------------------------------------------</span>
-
-Enables garbage collection, returning <span class="nb">true </span><span class="k">if </span>garbage collection was
-previously disabled.
-
-  GC.disable   <span class="c">#=&gt; false</span>
-  GC.enable    <span class="c">#=&gt; true</span>
-  GC.enable    <span class="c">#=&gt; false</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = Greeter.new("junhyeok".capitalize)
+g.name = "Andy"
 </code></pre></div></div>
 
-<p>입력한 메서드 이름이 다수의 클래스나 모듈에 있다면 <code class="language-plaintext highlighter-rouge">ri</code>는 모든 결과를 리스트로 제공한다.</p>
+<p>그럼 접근 가능한지 확인하는 방법은? 이 클래스가 가지고 있는 메소드를 확인하는 방법은?</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ri assoc
-<span class="o">=</span> .assoc
+<p>바로 <code class="language-plaintext highlighter-rouge">respond_to?("메소드 이름")</code>으로 확인 가능하다. return 값은 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>이다.</p>
 
-<span class="o">(</span>from ruby site<span class="o">)</span>
-<span class="o">===</span> Implementation from Array
-<span class="nt">------------------------------------------------------------------------</span>
-  ary.assoc<span class="o">(</span>obj<span class="o">)</span>   -&gt; element_ary  or  nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Greeter.respond_to?("say_hi")
+=&gt; true
 
-<span class="nt">------------------------------------------------------------------------</span>
-
-Searches through an array whose elements are also arrays comparing obj
-with the first element of each contained array using obj.<span class="o">==</span><span class="nb">.</span>
-
-Returns the first contained array that matches <span class="o">(</span>that is, the first
-associated array<span class="o">)</span>, or nil <span class="k">if </span>no match is found.
-
-See also Array#rassoc
-
-  s1 <span class="o">=</span> <span class="o">[</span> <span class="s2">"colors"</span>, <span class="s2">"red"</span>, <span class="s2">"blue"</span>, <span class="s2">"green"</span> <span class="o">]</span>
-  s2 <span class="o">=</span> <span class="o">[</span> <span class="s2">"letters"</span>, <span class="s2">"a"</span>, <span class="s2">"b"</span>, <span class="s2">"c"</span> <span class="o">]</span>
-  s3 <span class="o">=</span> <span class="s2">"foo"</span>
-  a  <span class="o">=</span> <span class="o">[</span> s1, s2, s3 <span class="o">]</span>
-  a.assoc<span class="o">(</span><span class="s2">"letters"</span><span class="o">)</span>  <span class="c">#=&gt; [ "letters", "a", "b", "c" ]</span>
-  a.assoc<span class="o">(</span><span class="s2">"foo"</span><span class="o">)</span>      <span class="c">#=&gt; nil</span>
+irb(main):027:0&gt; Greeter.instance_methods
+=&gt; [:say_hi, :say_bye, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :instance_variable_get, :instance_variable_set, :instance_variables, :singleton_method, :method, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :&lt;=&gt;, :===, :=~, :!~, :eql?, :respond_to?, :freeze, :inspect, :object_id, :send, :to_s, :display, :nil?, :hash, :class, :singleton_class, :clone, :dup, :itself, :yield_self, :then, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods, :equal?, :!, :__id__, :==, :instance_exec, :!=, :instance_eval, :__send__]
+irb(main):028:0&gt; Greeter.instance_methods(false)
+=&gt; [:say_hi, :say_bye]
 </code></pre></div></div>
 
-<h4 id="ri-도움말"><code class="language-plaintext highlighter-rouge">ri</code> 도움말</h4>
-<p><code class="language-plaintext highlighter-rouge">ri --help</code></p>
+<p>이런식으로 class에 어떤 메소드가 있는지도 확인할 수 있다. 먼가 Python에서 많이 보던 <code class="language-plaintext highlighter-rouge">__</code>도 볼 수 있다.<br />
+먼가 직접 만든 <code class="language-plaintext highlighter-rouge">initialize</code>, <code class="language-plaintext highlighter-rouge">say_hi</code>, <code class="language-plaintext highlighter-rouge">say_bye</code> 이외에도 많은 걸 보면 class 자체 적으로 받는 것 같다.<br />
+부모 class 메소드를 보고 싶지 않으면 <code class="language-plaintext highlighter-rouge">instance_methods(false)</code> 하면 된다.</p>
 
-<p>끝내준다~~</p>
+<h3 id="class를-변경할-수-있다고">Class를 변경할 수 있다고?</h3>
 
-<h3 id="ri-사용법-관련-참고-사이트">ri 사용법 관련 참고 사이트</h3>
-<p><a href="https://samuelmullen.com/2012/01/up-and-running-with-ruby-interactive-ri/">samuelmullen</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main):044:0&gt; class Greeter
+irb(main):045:1&gt;   attr_accessor :name
+irb(main):046:1&gt; end
+=&gt; nil
+</code></pre></div></div>
+
+<p>진짜 기똥차다…</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main):047:0&gt; g = Greeter.new("Andy")
+=&gt; #&lt;Greeter:0x3c9b0 @name="Andy"&gt;
+irb(main):048:0&gt; g.respond_to?("name")
+=&gt; true
+irb(main):049:0&gt; g.respond_to?("name=")
+=&gt; true
+irb(main):050:0&gt; g.say_hi
+Hi Andy!
+=&gt; nil
+irb(main):051:0&gt; g.name="Betty"
+=&gt; "Betty"
+irb(main):052:0&gt; g
+=&gt; #&lt;Greeter:0x3c9b0 @name="Betty"&gt;
+irb(main):053:0&gt; g.name
+=&gt; "Betty"
+irb(main):054:0&gt; g.say_hi
+Hi Betty!
+=&gt; nil
+</code></pre></div></div>
+
+<p>갑자기 <code class="language-plaintext highlighter-rouge">name</code>에 접근 가능하다.. <strong><code class="language-plaintext highlighter-rouge">private</code> 변수가 <code class="language-plaintext highlighter-rouge">public</code>변수가 된 것이다!!</strong><br />
+<strong>그렇다기 보다는 메소드 두 개가 생성된 것이다.</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">attr_accessor</code>은 두 개의 메서드를 새로 정의해준다. <code class="language-plaintext highlighter-rouge">name</code>은 인스턴스 변수의 값에 접근하기 위한 것이고 <code class="language-plaintext highlighter-rouge">name=</code>은 객체변수의 값을 변경하기 위한 것이다.</p>
+
+<p>IRB에서 빠져나오기 위해서는 “quit” 또는 “exit”이라고 입력하거나 Control-D를 누르면 된다.</p>
+
+<p>이번에는 IRB Ruby 인터랙티브 해석기를 사용하는 대신에 파일에 코드를 작성해보자. (이 예제가 참 재밌당 ㅎㅎ)</p>
+
+<p>참고 : <a href="https://www.ruby-lang.org/en/documentation/quickstart/">Ruby in Twenty Minutes</a></p>
+
+<p><em>참고로 이 글은 <strong><a href="https://hotamul.tistory.com/113">hotamul 블로그 - [Ruby] Ruby의 신기한 Class</a></strong>을 <strong><a href="https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling">tstory 블로그 크롤링</a></strong> 방법으로 <code class="language-plaintext highlighter-rouge">html</code> 파일을 긁어와 만든 게시물이다.</em></p>
 
         
     </div>
@@ -262,7 +257,7 @@ See also Array#rassoc
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
     </div>
     <div class="share-facebook">
-        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-10/ruby-docs-ri" data-layout="button_count"
+        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-11/ruby-interesting-class" data-layout="button_count"
              data-size="large" data-mobile-iframe="true">
             <a class="fb-xfbml-parse-ignore" target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">공유하기</a>

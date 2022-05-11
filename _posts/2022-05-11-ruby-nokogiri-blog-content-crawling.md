@@ -1,7 +1,7 @@
 ---
 layout: post
 category: ruby
-title: 'ruby nokogiri blog content crawler'
+title: 'tstory 블로그 크롤링'
 subtitle: ''
 banner: "/assets/images/common/ruby-logo.png"
 

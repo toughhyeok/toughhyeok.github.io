@@ -1,0 +1,81 @@
+I"0<h3 id="class">Class</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```ruby
+class Greeter
+  def initialize(name = "World")
+    @name = name
+  end
+  def say_hi
+    puts "Hi #{@name}!"
+  end
+  def say_bye
+    puts "Bye #{@name}, come back soon."
+  end
+end
+```
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">@name</code>은 인스턴스 변수를 뜻하고 모든 메서드에서 접근 가능하다.<br />
+하지만 이런식으로 접근은 불가하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = Greeter.new("junhyeok".capitalize)
+g.name = "Andy"
+</code></pre></div></div>
+
+<p>그럼 접근 가능한지 확인하는 방법은? 이 클래스가 가지고 있는 메소드를 확인하는 방법은?</p>
+
+<p>바로 <code class="language-plaintext highlighter-rouge">respond_to?("메소드 이름")</code>으로 확인 가능하다. return 값은 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Greeter.respond_to?("say_hi")
+=&gt; true
+
+irb(main):027:0&gt; Greeter.instance_methods
+=&gt; [:say_hi, :say_bye, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :instance_variable_get, :instance_variable_set, :instance_variables, :singleton_method, :method, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :&lt;=&gt;, :===, :=~, :!~, :eql?, :respond_to?, :freeze, :inspect, :object_id, :send, :to_s, :display, :nil?, :hash, :class, :singleton_class, :clone, :dup, :itself, :yield_self, :then, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods, :equal?, :!, :__id__, :==, :instance_exec, :!=, :instance_eval, :__send__]
+irb(main):028:0&gt; Greeter.instance_methods(false)
+=&gt; [:say_hi, :say_bye]
+</code></pre></div></div>
+
+<p>이런식으로 class에 어떤 메소드가 있는지도 확인할 수 있다. 먼가 Python에서 많이 보던 <code class="language-plaintext highlighter-rouge">__</code>도 볼 수 있다.<br />
+먼가 직접 만든 <code class="language-plaintext highlighter-rouge">initialize</code>, <code class="language-plaintext highlighter-rouge">say_hi</code>, <code class="language-plaintext highlighter-rouge">say_bye</code> 이외에도 많은 걸 보면 class 자체 적으로 받는 것 같다.<br />
+부모 class 메소드를 보고 싶지 않으면 <code class="language-plaintext highlighter-rouge">instance_methods(false)</code> 하면 된다.</p>
+
+<h3 id="class를-변경할-수-있다고">Class를 변경할 수 있다고?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main):044:0&gt; class Greeter
+irb(main):045:1&gt;   attr_accessor :name
+irb(main):046:1&gt; end
+=&gt; nil
+</code></pre></div></div>
+
+<p>진짜 기똥차다…</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main):047:0&gt; g = Greeter.new("Andy")
+=&gt; #&lt;Greeter:0x3c9b0 @name="Andy"&gt;
+irb(main):048:0&gt; g.respond_to?("name")
+=&gt; true
+irb(main):049:0&gt; g.respond_to?("name=")
+=&gt; true
+irb(main):050:0&gt; g.say_hi
+Hi Andy!
+=&gt; nil
+irb(main):051:0&gt; g.name="Betty"
+=&gt; "Betty"
+irb(main):052:0&gt; g
+=&gt; #&lt;Greeter:0x3c9b0 @name="Betty"&gt;
+irb(main):053:0&gt; g.name
+=&gt; "Betty"
+irb(main):054:0&gt; g.say_hi
+Hi Betty!
+=&gt; nil
+</code></pre></div></div>
+
+<p>갑자기 <code class="language-plaintext highlighter-rouge">name</code>에 접근 가능하다.. <strong><code class="language-plaintext highlighter-rouge">private</code> 변수가 <code class="language-plaintext highlighter-rouge">public</code>변수가 된 것이다!!</strong><br />
+<strong>그렇다기 보다는 메소드 두 개가 생성된 것이다.</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">attr_accessor</code>은 두 개의 메서드를 새로 정의해준다. <code class="language-plaintext highlighter-rouge">name</code>은 인스턴스 변수의 값에 접근하기 위한 것이고 <code class="language-plaintext highlighter-rouge">name=</code>은 객체변수의 값을 변경하기 위한 것이다.</p>
+
+<p>IRB에서 빠져나오기 위해서는 “quit” 또는 “exit”이라고 입력하거나 Control-D를 누르면 된다.</p>
+
+<p>이번에는 IRB Ruby 인터랙티브 해석기를 사용하는 대신에 파일에 코드를 작성해보자. (이 예제가 참 재밌당 ㅎㅎ)</p>
+
+<p>참고 : <a href="https://www.ruby-lang.org/en/documentation/quickstart/">Ruby in Twenty Minutes</a></p>
+:ET

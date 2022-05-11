@@ -5,15 +5,15 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 11 May 2022 00:50:14 +0900</pubDate>
-        <lastBuildDate>Wed, 11 May 2022 00:50:14 +0900</lastBuildDate>
+        <pubDate>Wed, 11 May 2022 14:16:06 +0900</pubDate>
+        <lastBuildDate>Wed, 11 May 2022 14:16:06 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
         
         <item>
-            <title>ruby nokogiri blog content crawler</title>
-            <description>&lt;p&gt;아래 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_blog_html_parser.rb&lt;/code&gt; 는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nokogiri&lt;/code&gt; 모듈을 이용해 만들어 본 blog-content-crawler 이다..&lt;/p&gt;
+            <title>tstory 블로그 크롤링</title>
+            <description>&lt;p&gt;아래 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_blog_html_parser.rb&lt;/code&gt; 는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nokogiri&lt;/code&gt; 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다..&lt;/p&gt;
 
-&lt;p&gt;실행 방법은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby test_blog_html_parser.rb &quot;https://toughhyeok.github.io/2022-05-10/ruby-hash-constructor&quot;&lt;/code&gt;로 해보면 실행한 폴더에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmp.html&lt;/code&gt; 파일이 생성된 걸 볼 수 있다.&lt;/p&gt;
+&lt;p&gt;실행 방법은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby test_blog_html_parser.rb &quot;https://hotamul.tistory.com/113&quot;&lt;/code&gt;로 해보면 실행한 폴더에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;113.html&lt;/code&gt; 파일이 생성된 걸 볼 수 있다.&lt;/p&gt;
 
 &lt;p&gt;너무 허접하다..&lt;/p&gt;
 
@@ -22,24 +22,35 @@
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'open-uri'&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Nokogiri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Nokogiri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UTF_8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inner_html&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;post_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.post-info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slice!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post_info&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;content_html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.article-view&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inner_html&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;extra_html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;extra_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.container_postbtn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;extra_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.another_category&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;extra_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;slice!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content_html&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; was saved successfully.&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_valid_file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)\&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/[\x00\/\\:\*\?\%&quot;&amp;lt;&amp;gt;\|]/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
 &lt;span class=&quot;no&quot;&gt;PAGE_URL_LIST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ARGV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;PAGE_URL_LIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./tmp.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;html_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_valid_file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -47,6 +58,98 @@
             <pubDate>Wed, 11 May 2022 00:00:00 +0900</pubDate>
             <link>https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling</link>
             <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling</guid>
+            
+            
+            <category>ruby</category>
+            
+        </item>
+        
+        <item>
+            <title>재미있는 ruby 클래스</title>
+            <description>&lt;h3 id=&quot;class&quot;&gt;Class&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Greeter
+  def initialize(name = &quot;World&quot;)
+    @name = name
+  end
+  def say_hi
+    puts &quot;Hi #{@name}!&quot;
+  end
+  def say_bye
+    puts &quot;Bye #{@name}, come back soon.&quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@name&lt;/code&gt;은 인스턴스 변수를 뜻하고 모든 메서드에서 접근 가능하다.&lt;br /&gt;
+하지만 이런식으로 접근은 불가하다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g = Greeter.new(&quot;junhyeok&quot;.capitalize)
+g.name = &quot;Andy&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그럼 접근 가능한지 확인하는 방법은? 이 클래스가 가지고 있는 메소드를 확인하는 방법은?&lt;/p&gt;
+
+&lt;p&gt;바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;respond_to?(&quot;메소드 이름&quot;)&lt;/code&gt;으로 확인 가능하다. return 값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Greeter.respond_to?(&quot;say_hi&quot;)
+=&amp;gt; true
+
+irb(main):027:0&amp;gt; Greeter.instance_methods
+=&amp;gt; [:say_hi, :say_bye, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :instance_variable_get, :instance_variable_set, :instance_variables, :singleton_method, :method, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :&amp;lt;=&amp;gt;, :===, :=~, :!~, :eql?, :respond_to?, :freeze, :inspect, :object_id, :send, :to_s, :display, :nil?, :hash, :class, :singleton_class, :clone, :dup, :itself, :yield_self, :then, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods, :equal?, :!, :__id__, :==, :instance_exec, :!=, :instance_eval, :__send__]
+irb(main):028:0&amp;gt; Greeter.instance_methods(false)
+=&amp;gt; [:say_hi, :say_bye]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이런식으로 class에 어떤 메소드가 있는지도 확인할 수 있다. 먼가 Python에서 많이 보던 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__&lt;/code&gt;도 볼 수 있다.&lt;br /&gt;
+먼가 직접 만든 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initialize&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;say_hi&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;say_bye&lt;/code&gt; 이외에도 많은 걸 보면 class 자체 적으로 받는 것 같다.&lt;br /&gt;
+부모 class 메소드를 보고 싶지 않으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instance_methods(false)&lt;/code&gt; 하면 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;class를-변경할-수-있다고&quot;&gt;Class를 변경할 수 있다고?&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb(main):044:0&amp;gt; class Greeter
+irb(main):045:1&amp;gt;   attr_accessor :name
+irb(main):046:1&amp;gt; end
+=&amp;gt; nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;진짜 기똥차다…&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb(main):047:0&amp;gt; g = Greeter.new(&quot;Andy&quot;)
+=&amp;gt; #&amp;lt;Greeter:0x3c9b0 @name=&quot;Andy&quot;&amp;gt;
+irb(main):048:0&amp;gt; g.respond_to?(&quot;name&quot;)
+=&amp;gt; true
+irb(main):049:0&amp;gt; g.respond_to?(&quot;name=&quot;)
+=&amp;gt; true
+irb(main):050:0&amp;gt; g.say_hi
+Hi Andy!
+=&amp;gt; nil
+irb(main):051:0&amp;gt; g.name=&quot;Betty&quot;
+=&amp;gt; &quot;Betty&quot;
+irb(main):052:0&amp;gt; g
+=&amp;gt; #&amp;lt;Greeter:0x3c9b0 @name=&quot;Betty&quot;&amp;gt;
+irb(main):053:0&amp;gt; g.name
+=&amp;gt; &quot;Betty&quot;
+irb(main):054:0&amp;gt; g.say_hi
+Hi Betty!
+=&amp;gt; nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;갑자기 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt;에 접근 가능하다.. &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt; 변수가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;변수가 된 것이다!!&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;그렇다기 보다는 메소드 두 개가 생성된 것이다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt;은 두 개의 메서드를 새로 정의해준다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt;은 인스턴스 변수의 값에 접근하기 위한 것이고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name=&lt;/code&gt;은 객체변수의 값을 변경하기 위한 것이다.&lt;/p&gt;
+
+&lt;p&gt;IRB에서 빠져나오기 위해서는 “quit” 또는 “exit”이라고 입력하거나 Control-D를 누르면 된다.&lt;/p&gt;
+
+&lt;p&gt;이번에는 IRB Ruby 인터랙티브 해석기를 사용하는 대신에 파일에 코드를 작성해보자. (이 예제가 참 재밌당 ㅎㅎ)&lt;/p&gt;
+
+&lt;p&gt;참고 : &lt;a href=&quot;https://www.ruby-lang.org/en/documentation/quickstart/&quot;&gt;Ruby in Twenty Minutes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;참고로 이 글은 &lt;strong&gt;&lt;a href=&quot;https://hotamul.tistory.com/113&quot;&gt;hotamul 블로그 - [Ruby] Ruby의 신기한 Class&lt;/a&gt;&lt;/strong&gt;을 &lt;strong&gt;&lt;a href=&quot;https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling&quot;&gt;tstory 블로그 크롤링&lt;/a&gt;&lt;/strong&gt; 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;html&lt;/code&gt; 파일을 긁어와 만든 게시물이다.&lt;/em&gt;&lt;/p&gt;
+</description>
+            <pubDate>Wed, 11 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-11/ruby-interesting-class</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-11/ruby-interesting-class</guid>
             
             
             <category>ruby</category>
