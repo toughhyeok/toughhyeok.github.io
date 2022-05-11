@@ -1,4 +1,4 @@
-I"<ul class="catalogue">
+I"�<ul class="catalogue">
 
     <li class="catalogue-item">
     <a href="/2022-05-11/ruby-nokogiri-blog-content-crawling">
@@ -23,7 +23,7 @@
         </p>
         <div class="catalogue-info transition">
             <h1 class="catalogue-title">
-                ruby nokogiri blog content crawler
+                tstory 블로그 크롤링
             </h1>
             <p class="catalogue-sub">
                 
@@ -66,7 +66,43 @@
             </p>
 
             
-            <p class="catalogue-body">Class ```ruby class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def...</p>
+            <p class="catalogue-body">Class class Greeter def initialize(name = "World") @name = name end def say_hi puts "Hi #{@name}!" end def say_bye...</p>
+            
+        </div>
+    </a>
+</li>    
+
+    <li class="catalogue-item">
+    <a href="/2022-05-11/ruby-attr-accesor-reader">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            ruby
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                ruby Class 속성 접근자
+            </h1>
+            <p class="catalogue-sub">
+                attr_reader attr_accessor
+            </p>
+
+            
+            <p class="catalogue-body">ruby에 class의 getter, setter를 만드는 방법은 여러가지가 있다. Getter class...</p>
             
         </div>
     </a>
