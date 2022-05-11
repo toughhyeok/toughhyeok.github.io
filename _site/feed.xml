@@ -5,9 +5,59 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 11 May 2022 15:50:00 +0900</pubDate>
-        <lastBuildDate>Wed, 11 May 2022 15:50:00 +0900</lastBuildDate>
+        <pubDate>Wed, 11 May 2022 15:59:34 +0900</pubDate>
+        <lastBuildDate>Wed, 11 May 2022 15:59:34 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
+        
+        <item>
+            <title>ruby 객체 method to_s</title>
+            <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby&lt;/code&gt;는 모든 것이 &lt;strong&gt;객체&lt;/strong&gt;로 이루어져 있다.&lt;/p&gt;
+
+&lt;p&gt;그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt;에 객체를 전달인자로 전달하면 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:002:0&amp;gt; a &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Array.new&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;1,2,3,4]&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1, 2, 3, 4]
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:003:0&amp;gt; puts a
+1
+2
+3
+4
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;어떻게 이게 가능한 걸까?&lt;/p&gt;
+
+&lt;p&gt;모든 객체는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;to_s&lt;/code&gt; 메소드를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;그리고 Overriding 해서 사용할 수도 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:028:1&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; class BookInStock
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:029:2&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   def initialize&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;isbn, price&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:030:2&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;     @isbn &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; isbn
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:031:2&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;     @price &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Float&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:032:1&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   end
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:033:2&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   def to_s
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:034:2&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;     &lt;span class=&quot;s2&quot;&gt;&quot;ISBN: #{@isbn}, price: #{@price}&quot;&lt;/span&gt;
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:035:1&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   end
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:036:0&amp;gt; end
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; :to_s
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:037:0&amp;gt; b &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; BookInStock.new&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'HASDF'&lt;/span&gt;, 3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#&amp;lt;BookInStock:0x0000021cac046b98 @isbn=&quot;HASDF&quot;, @price=3.0&amp;gt;&lt;/span&gt;
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:038:0&amp;gt; puts b
+ISBN: HASDF, price: 3.0
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;즉 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 메소드에 객체를 전달하게 되면 객체는 자동적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;to_s&lt;/code&gt; 메소드를 호출하여 객체를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt;으로 변환한다는 사실을 알 수 있다.&lt;/p&gt;
+</description>
+            <pubDate>Wed, 11 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-11/ruby-to_s</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-11/ruby-to_s</guid>
+            
+            
+            <category>ruby</category>
+            
+        </item>
         
         <item>
             <title>tstory 블로그 크롤링</title>

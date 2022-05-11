@@ -1,4 +1,40 @@
-I"�<ul class="catalogue">
+I"3!<ul class="catalogue">
+
+    <li class="catalogue-item">
+    <a href="/2022-05-11/ruby-to_s">
+
+        
+
+        <!-- 업로드 후, 지난 날짜 계산. 일주일 이내에 포스트 라면 New 태그 등록 -->
+        
+        
+        
+        
+
+        <!-- draft 상태일 떄는 New 태그 추가 안함 -->
+        
+        <span class="catalogue-tag">
+            New
+        </span>
+        
+
+        <p class="catalogue-type">
+            ruby
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                ruby 객체 method to_s
+            </h1>
+            <p class="catalogue-sub">
+                
+            </p>
+
+            
+            <p class="catalogue-body">ruby는 모든 것이 객체로 이루어져 있다. 그리고 puts에 객체를 전달인자로 전달하면 다음과 같다. irb(main):002:0&gt;...</p>
+            
+        </div>
+    </a>
+</li>    
 
     <li class="catalogue-item">
     <a href="/2022-05-11/ruby-nokogiri-blog-content-crawling">

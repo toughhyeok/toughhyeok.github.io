@@ -14,21 +14,21 @@
     <!-- image -->
     
 
-    <title>ruby Class 속성 접근자 | toughhyeok</title>
-    <meta name="description" content="ruby에 class의 getter, setter를 만드는 방법은 여러가지가 있다. Getter class BookInStock def initialize<span...">
+    <title>ruby 객체 method to_s | toughhyeok</title>
+    <meta name="description" content="ruby는 모든 것이 객체로 이루어져 있다. 그리고 puts에 객체를 전달인자로 전달하면 다음과 같다. irb(main):002:0&gt; a = Array.new([1,2,3,4])...">
 
     <!-- Open Graph : 링크 미리보기 -->
     <meta property="og:site_name" content="toughhyeok">
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-11/ruby-attr-accesor-reader"/>
+    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-11/ruby-to_s"/>
     <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/ruby-logo.png">
-    <meta property="og:title" content="ruby Class 속성 접근자 | toughhyeok">
-    <meta property="og:description" content="ruby에 class의 getter, setter를 만드는 방법은 여러가지가 있다. Getter class BookInStock def initialize<span..."/>
+    <meta property="og:title" content="ruby 객체 method to_s | toughhyeok">
+    <meta property="og:description" content="ruby는 모든 것이 객체로 이루어져 있다. 그리고 puts에 객체를 전달인자로 전달하면 다음과 같다. irb(main):002:0&gt; a = Array.new([1,2,3,4])..."/>
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ruby Class 속성 접근자 | toughhyeok">
-    <meta name="twitter:description" content="ruby에 class의 getter, setter를 만드는 방법은 여러가지가 있다. Getter class BookInStock def initialize<span...">
+    <meta name="twitter:title" content="ruby 객체 method to_s | toughhyeok">
+    <meta name="twitter:description" content="ruby는 모든 것이 객체로 이루어져 있다. 그리고 puts에 객체를 전달인자로 전달하면 다음과 같다. irb(main):002:0&gt; a = Array.new([1,2,3,4])...">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -130,74 +130,54 @@
                 </div>
             </div>
             <h1 class="post-title">
-                ruby Class 속성 접근자
+                ruby 객체 method to_s
             </h1>
             <h2 class="post-subtitle">
-                attr_reader attr_accessor
+                
             </h2>
         </div>
 
         <!-- draft 일 때 -->
         
         <!-- 큐레이션 영역 -->
-        <p><code class="language-plaintext highlighter-rouge">ruby</code>에 <code class="language-plaintext highlighter-rouge">class</code>의 <code class="language-plaintext highlighter-rouge">getter</code>, <code class="language-plaintext highlighter-rouge">setter</code>를 만드는 방법은 여러가지가 있다.</p>
+        <p><code class="language-plaintext highlighter-rouge">ruby</code>는 모든 것이 <strong>객체</strong>로 이루어져 있다.</p>
 
-<h3 id="getter">Getter</h3>
+<p>그리고 <code class="language-plaintext highlighter-rouge">puts</code>에 객체를 전달인자로 전달하면 다음과 같다.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookInStock</span>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">isbn</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
-        <span class="vi">@isbn</span> <span class="o">=</span> <span class="n">isbn</span>
-        <span class="vi">@price</span> <span class="o">=</span> <span class="n">price</span>
-    <span class="k">end</span>
-    <span class="k">def</span> <span class="nf">isbn</span>
-        <span class="vi">@isbn</span>
-    <span class="k">end</span>
-    <span class="k">def</span> <span class="nf">price</span>
-        <span class="vi">@price</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-<p>위에 <code class="language-plaintext highlighter-rouge">isbn</code>, <code class="language-plaintext highlighter-rouge">price</code> 메소드는 <code class="language-plaintext highlighter-rouge">@isbn</code>, <code class="language-plaintext highlighter-rouge">@price</code>를 <code class="language-plaintext highlighter-rouge">return</code>한다. (<code class="language-plaintext highlighter-rouge">getter</code> 역할)</p>
-
-<p>이를 더 간단하게 <code class="language-plaintext highlighter-rouge">attr_reader</code>로 표현할 수 있다.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookInStock</span>
-    <span class="nb">attr_reader</span> <span class="ss">:isbn</span><span class="p">,</span> <span class="ss">:price</span>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">isbn</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
-        <span class="vi">@isbn</span> <span class="o">=</span> <span class="n">isbn</span>
-        <span class="vi">@price</span> <span class="o">=</span> <span class="n">price</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb<span class="o">(</span>main<span class="o">)</span>:002:0&gt; a <span class="o">=</span> Array.new<span class="o">([</span>1,2,3,4]<span class="o">)</span>
+<span class="o">=&gt;</span> <span class="o">[</span>1, 2, 3, 4]
+irb<span class="o">(</span>main<span class="o">)</span>:003:0&gt; puts a
+1
+2
+3
+4
+<span class="o">=&gt;</span> nil
 </code></pre></div></div>
 
-<h3 id="setter">Setter</h3>
+<p>어떻게 이게 가능한 걸까?</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookInStock</span>
-    <span class="nb">attr_reader</span> <span class="ss">:isbn</span><span class="p">,</span> <span class="ss">:price</span>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">isbn</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
-        <span class="vi">@isbn</span> <span class="o">=</span> <span class="n">isbn</span>
-        <span class="vi">@price</span> <span class="o">=</span> <span class="n">price</span>
-    <span class="k">end</span>
-    <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="n">new_price</span><span class="p">)</span>
-        <span class="vi">@price</span> <span class="o">=</span> <span class="n">new_price</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">attr_reader</code>로 <code class="language-plaintext highlighter-rouge">isbn</code>, <code class="language-plaintext highlighter-rouge">price</code> 인스턴스 변수에 접근할 수 있게 되었다. 또한 <code class="language-plaintext highlighter-rouge">price</code> 메소드에 값을 전달하면 <code class="language-plaintext highlighter-rouge">@price</code>의 값을 변경할 수 있는 <code class="language-plaintext highlighter-rouge">Setter</code>도 있다는 것을 확인할 수 있다.</p>
+<p>모든 객체는 <code class="language-plaintext highlighter-rouge">to_s</code> 메소드를 가지고 있다.</p>
 
-<p>이 <code class="language-plaintext highlighter-rouge">Setter</code>도 <code class="language-plaintext highlighter-rouge">attr_accessor</code>를 이용해서 간단하게 표현할 수 있다.</p>
+<p>그리고 Overriding 해서 사용할 수도 있다.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BookInStock</span>
-    <span class="nb">attr_reader</span> <span class="ss">:isbn</span>
-    <span class="nb">attr_accessor</span> <span class="ss">:price</span>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">isbn</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
-        <span class="vi">@isbn</span> <span class="o">=</span> <span class="n">isbn</span>
-        <span class="vi">@price</span> <span class="o">=</span> <span class="no">Float</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb<span class="o">(</span>main<span class="o">)</span>:028:1<span class="k">*</span> class BookInStock
+irb<span class="o">(</span>main<span class="o">)</span>:029:2<span class="k">*</span>   def initialize<span class="o">(</span>isbn, price<span class="o">)</span>
+irb<span class="o">(</span>main<span class="o">)</span>:030:2<span class="k">*</span>     @isbn <span class="o">=</span> isbn
+irb<span class="o">(</span>main<span class="o">)</span>:031:2<span class="k">*</span>     @price <span class="o">=</span> Float<span class="o">(</span>price<span class="o">)</span>
+irb<span class="o">(</span>main<span class="o">)</span>:032:1<span class="k">*</span>   end
+irb<span class="o">(</span>main<span class="o">)</span>:033:2<span class="k">*</span>   def to_s
+irb<span class="o">(</span>main<span class="o">)</span>:034:2<span class="k">*</span>     <span class="s2">"ISBN: #{@isbn}, price: #{@price}"</span>
+irb<span class="o">(</span>main<span class="o">)</span>:035:1<span class="k">*</span>   end
+irb<span class="o">(</span>main<span class="o">)</span>:036:0&gt; end
+<span class="o">=&gt;</span> :to_s
+irb<span class="o">(</span>main<span class="o">)</span>:037:0&gt; b <span class="o">=</span> BookInStock.new<span class="o">(</span><span class="s1">'HASDF'</span>, 3<span class="o">)</span>
+<span class="o">=&gt;</span> <span class="c">#&lt;BookInStock:0x0000021cac046b98 @isbn="HASDF", @price=3.0&gt;</span>
+irb<span class="o">(</span>main<span class="o">)</span>:038:0&gt; puts b
+ISBN: HASDF, price: 3.0
+<span class="o">=&gt;</span> nil
 </code></pre></div></div>
 
-<p>여기서 <code class="language-plaintext highlighter-rouge">isbn</code>은 <code class="language-plaintext highlighter-rouge">getter</code>만 <code class="language-plaintext highlighter-rouge">price</code>는 <code class="language-plaintext highlighter-rouge">Getter</code>, <code class="language-plaintext highlighter-rouge">Setter</code>를 둘 다 가지고 있다.</p>
+<p>즉 <code class="language-plaintext highlighter-rouge">puts</code> 메소드에 객체를 전달하게 되면 객체는 자동적으로 <code class="language-plaintext highlighter-rouge">to_s</code> 메소드를 호출하여 객체를 <code class="language-plaintext highlighter-rouge">string</code>으로 변환한다는 사실을 알 수 있다.</p>
 
         
     </div>
@@ -235,7 +215,7 @@
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
     </div>
     <div class="share-facebook">
-        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-11/ruby-attr-accesor-reader" data-layout="button_count"
+        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-11/ruby-to_s" data-layout="button_count"
              data-size="large" data-mobile-iframe="true">
             <a class="fb-xfbml-parse-ignore" target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">공유하기</a>
