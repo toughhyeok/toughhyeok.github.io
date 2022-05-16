@@ -5,9 +5,118 @@
         <description>개발 기록장 ✏️</description>
         <link>https://toughhyeok.github.io/</link>
         <atom:link href="https://toughhyeok.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 11 May 2022 16:43:50 +0900</pubDate>
-        <lastBuildDate>Wed, 11 May 2022 16:43:50 +0900</lastBuildDate>
+        <pubDate>Mon, 16 May 2022 20:20:31 +0900</pubDate>
+        <lastBuildDate>Mon, 16 May 2022 20:20:31 +0900</lastBuildDate>
         <generator>Jekyll v4.2.0</generator>
+        
+        <item>
+            <title>python 생성자/소멸자 호출, accessor</title>
+            <description>&lt;h3 id=&quot;1-python에서-생성자소멸자-호출&quot;&gt;1. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서 생성자/소멸자 호출&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서는 생성자 및 소멸자가 어떻게 호출 될까?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;class Base:
+    def __init__(self, a=None):
+        if a:
+            print(&quot;Base(int)&quot;)
+        else:
+            print(&quot;Base()&quot;)
+
+    def __del__(self):
+        print(&quot;~Base()&quot;)
+
+
+class Animal(Base):
+    def __init__(self, a=None):
+        if a:
+            print(&quot;Animal(int)&quot;)
+        else:
+            print(&quot;Animal()&quot;)
+
+    def __del__(self):
+        print(&quot;~Animal()&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    d1 = Animal()
+    d2 = Animal(1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Animal&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+Animal&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;int&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+~Animal&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+~Animal&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서는 &lt;strong&gt;생성자 overriding이 지원되지 않는다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;대신 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;def __init__(self, a=None)&lt;/code&gt;과 같이 전달 인자 값을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt;로 설정할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C++&lt;/code&gt;과 달리 &lt;strong&gt;부모 클래스의 생성자, 소멸자가 호출 되지 않는다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서 생성자는 overriding 되지 않는다.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서 파생 클래스(concrete class)의 생성자/소멸자가 호출될 때 부모 클래스의 생성자/소멸자는 호출되지 않는다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-private-public-protected&quot;&gt;2. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C++&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt;에서는 기본적으로 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt;이며 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public:&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected:&lt;/code&gt;를 명시적으로 선언해 준다.
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt;는 기본적으로 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;, 그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C++&lt;/code&gt;에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;interface&lt;/code&gt; 키워드가 따로 없어서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#define struct interface&lt;/code&gt;를 예전에는 사용했었다. 즉 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt;를 주로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;interface&lt;/code&gt;를 생성할 때 사용 한다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서는 따로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected&lt;/code&gt; 키워드가 없지만 다음과 같은 방법으로 표현할 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;class Person:
+    count = 0       # public 멤버 변수
+    
+    def __init__(self, name, age, count=None):
+        self.name = name  # public 인스턴스 변수
+        self.age = age    # public 인스턴스 변수
+        self.count += 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;즉 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt; 멤버 변수는 인스턴스 또는 클래스로 직접 접근이 모두 가능하다.
+(인스턴스 변수는 인스턴스로만 접근이 가능함)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;class Person:
+    __count = 0       # public 멤버 변수
+    
+    def __init__(self, name, age, count=None):
+        self.__name = name  # public 인스턴스 변수
+        self.__age = age    # public 인스턴스 변수
+        Person.self.__count += 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;위 처럼 언더바 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt;  두 개를 붙여 사용하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt;로 선언한 것과 같은 효과가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected&lt;/code&gt;는 ‘_‘를 변수명 또는 함수명 앞에 한 개 붙여주면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C++&lt;/code&gt;에서
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected&lt;/code&gt; 생성자의 의미는 &lt;strong&gt;“자신의 객체는 생성할 수 없지만 (추상적인 존재) 파생 클래스의 객체(구체적인 존재)는 생성할 수 있도록 한다”&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python&lt;/code&gt;에서는 생성자/소멸자가 같이 호출되지 않지만 생성되지 않는 객체 일 경우 생성자/소멸자를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;protected&lt;/code&gt;로 선언해줄 필요가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;부모 클래스가 구현되어야 할지 아닐지는 아래 예시를 생각해보면 됩니다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;현실 세계를 생각해보자.&lt;/p&gt;
+
+  &lt;p&gt;“동물”이란 것이 존재하는가?&lt;/p&gt;
+
+  &lt;p&gt;“강아지”, “말”, “호랑이”,… 는 존재하는가?&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Mon, 16 May 2022 00:00:00 +0900</pubDate>
+            <link>https://toughhyeok.github.io/2022-05-16/python-accessor</link>
+            <guid isPermaLink="true">https://toughhyeok.github.io/2022-05-16/python-accessor</guid>
+            
+            
+            <category>python</category>
+            
+        </item>
         
         <item>
             <title>ruby 객체 method to_s</title>

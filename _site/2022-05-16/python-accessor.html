@@ -14,21 +14,21 @@
     <!-- image -->
     
 
-    <title>tstory 블로그 크롤링 | toughhyeok</title>
-    <meta name="description" content="아래 test_blog_html_parser.rb 는 nokogiri 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다.. 실행 방법은 ruby test_blog_html_parser.rb "https://hotamul.tistory.com/113"로 해보면 실행한 폴더에 113.html 파일이 생성된...">
+    <title>python 생성자/소멸자 호출, accessor | toughhyeok</title>
+    <meta name="description" content="1. Python에서 생성자/소멸자 호출 Python에서는 생성자 및 소멸자가 어떻게 호출 될까? class Base: def __init__(self, a=None): if a: print("Base(int)") else: print("Base()") def __del__(self): print("~Base()")...">
 
     <!-- Open Graph : 링크 미리보기 -->
     <meta property="og:site_name" content="toughhyeok">
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling"/>
-    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/ruby-logo.png">
-    <meta property="og:title" content="tstory 블로그 크롤링 | toughhyeok">
-    <meta property="og:description" content="아래 test_blog_html_parser.rb 는 nokogiri 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다.. 실행 방법은 ruby test_blog_html_parser.rb "https://hotamul.tistory.com/113"로 해보면 실행한 폴더에 113.html 파일이 생성된..."/>
+    <meta property="og:url" content="https://toughhyeok.github.io/2022-05-16/python-accessor"/>
+    <meta property="og:image" content="https://toughhyeok.github.io/assets/images/common/python-logo.png">
+    <meta property="og:title" content="python 생성자/소멸자 호출, accessor | toughhyeok">
+    <meta property="og:description" content="1. Python에서 생성자/소멸자 호출 Python에서는 생성자 및 소멸자가 어떻게 호출 될까? class Base: def __init__(self, a=None): if a: print("Base(int)") else: print("Base()") def __del__(self): print("~Base()")..."/>
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="tstory 블로그 크롤링 | toughhyeok">
-    <meta name="twitter:description" content="아래 test_blog_html_parser.rb 는 nokogiri 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다.. 실행 방법은 ruby test_blog_html_parser.rb "https://hotamul.tistory.com/113"로 해보면 실행한 폴더에 113.html 파일이 생성된...">
+    <meta name="twitter:title" content="python 생성자/소멸자 호출, accessor | toughhyeok">
+    <meta name="twitter:description" content="1. Python에서 생성자/소멸자 호출 Python에서는 생성자 및 소멸자가 어떻게 호출 될까? class Base: def __init__(self, a=None): if a: print("Base(int)") else: print("Base()") def __del__(self): print("~Base()")...">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -106,7 +106,7 @@
 
 
 <div class="post-header loading-animation "
-     style="background-image: url('/assets/images/common/ruby-logo.png')">
+     style="background-image: url('/assets/images/common/python-logo.png')">
 </div>
 
 
@@ -126,11 +126,11 @@
                 </div>
                 
                 <div class="post-type">
-                    ruby
+                    python
                 </div>
             </div>
             <h1 class="post-title">
-                tstory 블로그 크롤링
+                python 생성자/소멸자 호출, accessor
             </h1>
             <h2 class="post-subtitle">
                 
@@ -140,49 +140,103 @@
         <!-- draft 일 때 -->
         
         <!-- 큐레이션 영역 -->
-        <p>아래 <code class="language-plaintext highlighter-rouge">test_blog_html_parser.rb</code> 는 <code class="language-plaintext highlighter-rouge">nokogiri</code> 모듈을 이용해 만들어 본 tstory용 blog-content-crawler 이다..</p>
+        <h3 id="1-python에서-생성자소멸자-호출">1. <code class="language-plaintext highlighter-rouge">Python</code>에서 생성자/소멸자 호출</h3>
+<p><code class="language-plaintext highlighter-rouge">Python</code>에서는 생성자 및 소멸자가 어떻게 호출 될까?</p>
 
-<p>실행 방법은 <code class="language-plaintext highlighter-rouge">ruby test_blog_html_parser.rb "https://hotamul.tistory.com/113"</code>로 해보면 실행한 폴더에 <code class="language-plaintext highlighter-rouge">113.html</code> 파일이 생성된 걸 볼 수 있다.</p>
+<pre><code class="language-python3">class Base:
+    def __init__(self, a=None):
+        if a:
+            print("Base(int)")
+        else:
+            print("Base()")
 
-<p>너무 허접하다..</p>
+    def __del__(self):
+        print("~Base()")
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># test_blog_html_parser.rb</span>
-<span class="nb">require</span> <span class="s1">'nokogiri'</span>
-<span class="nb">require</span> <span class="s1">'open-uri'</span>
 
-<span class="k">def</span> <span class="nf">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="kp">nil</span><span class="p">,</span> <span class="no">Encoding</span><span class="o">::</span><span class="no">UTF_8</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)</span>
-<span class="k">end</span>
+class Animal(Base):
+    def __init__(self, a=None):
+        if a:
+            print("Animal(int)")
+        else:
+            print("Animal()")
 
-<span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
-    <span class="n">content_html</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".article-view"</span><span class="p">).</span><span class="nf">inner_html</span>
-    <span class="n">extra_html</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">extra_html</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".container_postbtn"</span><span class="p">).</span><span class="nf">to_html</span><span class="p">)</span>
-    <span class="n">extra_html</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".another_category"</span><span class="p">).</span><span class="nf">to_html</span><span class="p">)</span>
-    <span class="n">extra_html</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">extra</span><span class="o">|</span> <span class="n">content_html</span><span class="p">.</span><span class="nf">slice!</span> <span class="n">extra</span><span class="p">}</span>
-    <span class="k">return</span> <span class="n">content_html</span>
-<span class="k">end</span>
+    def __del__(self):
+        print("~Animal()")
 
-<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">str</span><span class="p">)</span>
-    <span class="n">html_file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
-    <span class="n">html_file</span><span class="p">.</span><span class="nf">write</span> <span class="n">str</span>
-    <span class="n">html_file</span><span class="p">.</span><span class="nf">close</span>
-    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">file_path</span><span class="si">}</span><span class="s2"> was saved successfully."</span>
-<span class="k">end</span>
 
-<span class="k">def</span> <span class="nf">get_valid_file_path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)\</span>
-    <span class="k">return</span> <span class="n">file_path</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[\x00\/\\:\*\?\%"&lt;&gt;\|]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="no">PAGE_URL_LIST</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">;</span>
-<span class="no">PAGE_URL_LIST</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">url</span><span class="o">|</span>
-    <span class="n">page</span> <span class="o">=</span> <span class="n">get_page</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
-    <span class="n">file_path</span> <span class="o">=</span> <span class="n">get_valid_file_path</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">write</span><span class="p">(</span><span class="s2">"./</span><span class="si">#{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
-<span class="k">end</span>
+if __name__ == "__main__":
+    d1 = Animal()
+    d2 = Animal(1)
+</code></pre>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Animal<span class="o">()</span>
+Animal<span class="o">(</span>int<span class="o">)</span>
+~Animal<span class="o">()</span>
+~Animal<span class="o">()</span>
 </code></pre></div></div>
 
+<p>우선 <code class="language-plaintext highlighter-rouge">Python</code>에서는 <strong>생성자 overriding이 지원되지 않는다.</strong></p>
+
+<p>대신 <code class="language-plaintext highlighter-rouge">def __init__(self, a=None)</code>과 같이 전달 인자 값을 <code class="language-plaintext highlighter-rouge">default</code>로 설정할 수 있다.</p>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">C++</code>과 달리 <strong>부모 클래스의 생성자, 소멸자가 호출 되지 않는다.</strong></p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Python</code>에서 생성자는 overriding 되지 않는다.</strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Python</code>에서 파생 클래스(concrete class)의 생성자/소멸자가 호출될 때 부모 클래스의 생성자/소멸자는 호출되지 않는다.</strong></li>
+</ul>
+
+<h3 id="2-private-public-protected">2. <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">protected</code></h3>
+<p><code class="language-plaintext highlighter-rouge">C++</code> <code class="language-plaintext highlighter-rouge">class</code>에서는 기본적으로 모두 <code class="language-plaintext highlighter-rouge">private</code>이며 <code class="language-plaintext highlighter-rouge">public:</code>, <code class="language-plaintext highlighter-rouge">protected:</code>를 명시적으로 선언해 준다.
+(<code class="language-plaintext highlighter-rouge">struct</code>는 기본적으로 모두 <code class="language-plaintext highlighter-rouge">public</code>, 그리고 <code class="language-plaintext highlighter-rouge">C++</code>에는 <code class="language-plaintext highlighter-rouge">interface</code> 키워드가 따로 없어서 <code class="language-plaintext highlighter-rouge">#define struct interface</code>를 예전에는 사용했었다. 즉 <code class="language-plaintext highlighter-rouge">struct</code>를 주로 <code class="language-plaintext highlighter-rouge">interface</code>를 생성할 때 사용 한다.)</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Python</code>에서는 따로 <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">protected</code> 키워드가 없지만 다음과 같은 방법으로 표현할 수 있다.</p>
+
+<pre><code class="language-python3">class Person:
+    count = 0       # public 멤버 변수
+    
+    def __init__(self, name, age, count=None):
+        self.name = name  # public 인스턴스 변수
+        self.age = age    # public 인스턴스 변수
+        self.count += 1
+</code></pre>
+
+<p>즉 <code class="language-plaintext highlighter-rouge">public</code> 멤버 변수는 인스턴스 또는 클래스로 직접 접근이 모두 가능하다.
+(인스턴스 변수는 인스턴스로만 접근이 가능함)</p>
+
+<p><br /></p>
+
+<pre><code class="language-python3">class Person:
+    __count = 0       # public 멤버 변수
+    
+    def __init__(self, name, age, count=None):
+        self.__name = name  # public 인스턴스 변수
+        self.__age = age    # public 인스턴스 변수
+        Person.self.__count += 1
+</code></pre>
+<p>위 처럼 언더바 <code class="language-plaintext highlighter-rouge">_</code>  두 개를 붙여 사용하면 <code class="language-plaintext highlighter-rouge">private</code>로 선언한 것과 같은 효과가 있습니다.</p>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">protected</code>는 ‘_‘를 변수명 또는 함수명 앞에 한 개 붙여주면 됩니다.</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">C++</code>에서
+<code class="language-plaintext highlighter-rouge">protected</code> 생성자의 의미는 <strong>“자신의 객체는 생성할 수 없지만 (추상적인 존재) 파생 클래스의 객체(구체적인 존재)는 생성할 수 있도록 한다”</strong> 입니다.</p>
+
+<p>하지만 <code class="language-plaintext highlighter-rouge">Python</code>에서는 생성자/소멸자가 같이 호출되지 않지만 생성되지 않는 객체 일 경우 생성자/소멸자를 <code class="language-plaintext highlighter-rouge">protected</code>로 선언해줄 필요가 있습니다.</p>
+
+<p><br /></p>
+
+<p>부모 클래스가 구현되어야 할지 아닐지는 아래 예시를 생각해보면 됩니다.</p>
+<blockquote>
+  <p>현실 세계를 생각해보자.</p>
+
+  <p>“동물”이란 것이 존재하는가?</p>
+
+  <p>“강아지”, “말”, “호랑이”,… 는 존재하는가?</p>
+</blockquote>
 
         
     </div>
@@ -220,7 +274,7 @@
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
     </div>
     <div class="share-facebook">
-        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-11/ruby-nokogiri-blog-content-crawling" data-layout="button_count"
+        <div class="fb-share-button" data-href="https://toughhyeok.github.io/2022-05-16/python-accessor" data-layout="button_count"
              data-size="large" data-mobile-iframe="true">
             <a class="fb-xfbml-parse-ignore" target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">공유하기</a>
