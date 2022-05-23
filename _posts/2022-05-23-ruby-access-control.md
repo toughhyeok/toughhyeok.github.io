@@ -20,3 +20,32 @@ banner: "/assets/images/common/ruby-logo.png"
 <br>
 
 > *루비와 다른 객체 지향 언어의 중요한 차이점은 접근 제어가 동적으로 결정된다는 것이다. 즉 프로그램이 실행될 때 제한된 메서드를 실체로 호출한 순가에만 접근 위반 예외가 발생한다.*
+
+<br>
+
+```ruby
+...
+private         # 이제 부터 선언하는 메서드는 모두 'private'이다.
+  def method3
+    #...
+  end
+public
+  def method4   # 이제 부터 선언하는 모든 메서드는 `public`이 된다.
+  end
+...
+```
+
+<br>
+
+```ruby
+...
+  def method3
+    #...
+  end
+  def method4
+  end
+
+  public        :method4
+  private       :method3
+...
+```
